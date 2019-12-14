@@ -20,9 +20,9 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('public/team');
 	}
-	public function formate()
+	public function format()
 	{
-		$this->load->view('resume/format6');
+		$this->load->view('resume/build_format1');
 	}
 	public function resume()
 	{

@@ -74,7 +74,7 @@
           <li><a href="<?php echo base_url();?>team">TEAM</a></li>
           <li><a href="<?php echo base_url();?>services">SERVICES</a></li>
           <li><a href="<?php echo base_url();?>resume">RESUME BUILDER</a></li>
-          <li><a href="<?php echo base_url();?>formate">format</a></li>
+          <li><a href="<?php echo base_url();?>format">QUIZ</a></li>
           <li><a href="<?php echo base_url();?>contact_us">CONTACT US</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
