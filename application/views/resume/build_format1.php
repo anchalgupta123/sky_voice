@@ -86,19 +86,12 @@
             <div class="container-fluid">
               <div class="row format">
                 <div class="col-md-4">
-                 <div class="containerimg">
-                 <img style="height:410px;width: 350px;border:1px solid gray;" src="<?php echo base_url();?>frontend_assets/img/resume/format111.jpg" class="image">
-                  <div class="overlay">
-                    <div class="text">
-                      <a href="<?php echo base_url();?>home/format"><button type="button" class="btn-primary">Select Templete</button></a>
-                    </div>
-                  </div>
+                 <p>Build Your Resume</p>
                 </div>
               </div>
            </div>
        </div> 
         </div>
-      </div>
     </section>
   </main>
 
