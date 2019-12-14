@@ -86,7 +86,7 @@
             <div class="container-fluid">
               <div class="row format">
                 <div class="col-md-4">
-                 <p>Build Your Resume by ajay </p>
+                 <p>Build your resume now</p>
                 </div>
               </div>
            </div>
