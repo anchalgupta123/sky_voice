@@ -16,23 +16,22 @@
   <h2>Accordion Example</h2>
   <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
   <div id="accordion">
+  <a class="card-link" data-toggle="collapse" href="#collapseOne">
     <div class="card">
       <div class="card-header">
-        <a class="card-link" data-toggle="collapse" href="#collapseOne">
-          Objective
-        </a>
+          <h2>Objective</h2>
       </div>
       <div id="collapseOne" class="collapse show" data-parent="#accordion">
         <div class="card-body">	
           <textarea type="text" name="" placeholder="Enter Your Objective" class="col-md-12"></textarea>
         </div>
       </div>
-    </div><br>
+    </div>
+     </a><br>
+    <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
     <div class="card">
       <div class="card-header">
-        <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-         Education
-      </a>
+         <h2>Education</h2>
       </div>
       <div id="collapseTwo" class="collapse" data-parent="#accordion">
         <div class="card-body">
