@@ -20,7 +20,6 @@ function change_img(img,preview_img)
     }
 }
 
-
 function login() {
 	email = $('#email').val();
 	password = $('#password').val();
@@ -1313,6 +1312,10 @@ function delete_technical_hindi_category(id)
     }
 
 }
+
+
+
+
 function change_state()
 {
     state = $('#state').val();

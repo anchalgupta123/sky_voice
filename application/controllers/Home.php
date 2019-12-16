@@ -2,6 +2,24 @@
 
 class Home extends CI_Controller {
 
+	public $current_date_time;
+	public $login_id;
+	public $login_role;
+
+	public function __construct()
+	{
+		parent::__construct();
+		$this->login_id = $this->session->userdata('login_id');
+		$this->login_role = $this->session->userdata('login_role');
+		if(function_exists('date_default_timezone_set')) {
+		    date_default_timezone_set("Asia/Kolkata");
+		}
+		/*if (!$this->login_id) {
+			redirect('Login');
+		}*/
+		$this->current_date_time = date('Y-m-d H:i:s');
+	}
+
 	public function index()
 	{
 		$this->load->view('public/home');
@@ -20,15 +38,6 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('public/team');
 	}
-	public function format()
-	{
-		$this->load->view('resume/build_format1');
-	}
-	public function format1_form()
-	{
-		$this->load->view('resume/format1_form');
-	}
-
 	public function resume()
 	{
 		$this->load->view('public/resume');
@@ -96,6 +105,82 @@ class Home extends CI_Controller {
 
 		$send_message = "User name :- ".$name. " " .$last_name. " <br>Mobile :- ".$mobile ." <br>Email:- ".$mail." <br>Subject:- ".$subject. " <br>Message :- ".$message;
 		echo sendEmail('svaenquiry@gmail.com',$name,$subject,$send_message,$mail);
+	}
+	public function format()
+	{
+		$this->load->view('resume/build_format1');
+	}
+	public function format1_form()
+	{
+		$this->load->view('resume/format1_form');
+	}
+	public function add_contact_form()
+	{
+        $first_name = $_POST['first_name'];
+		$last_name  = $_POST['last_name'];
+		$phone  = $_POST['phone'];
+		$email  = $_POST['email'];
+		$address  = $_POST['address'];
+		$city  = $_POST['city'];
+		$state   = $_POST['state'];
+		$pincode   = $_POST['pincode'];
+		$country   = $_POST['country'];
+
+        $this->load->model('Model_resume_format1');
+        $data_category = array(
+        	'first_name'=>$first_name,
+        	'last_name'=>$last_name,
+        	'phone'=>$phone,
+        	'email'=>$email,
+        	'address'=>$address,
+        	'city' =>$city,
+        	'state' =>$state,
+        	'pincode' =>$pincode,
+        	'country' =>$country,
+           );
+
+        $data_id = $this->Model_resume_format1->insert_resume_format1_contact($data_category);
+        if ($data_id) {
+        	echo "Valid";
+        }
+	}
+	public function add_objective_form()
+	{
+        $objective = $_POST['objective'];
+
+        $this->load->model('Model_resume_format1');
+        $data_category = array(
+        	'objective'=>$objective,
+           );
+
+        $data_id = $this->Model_resume_format1->insert_resume_format1_objective($data_category);
+        if ($data_id) {
+        	echo "Valid";
+        }
+	}
+	public function add_eductaion_form()
+	{
+        $degree_name = $_POST['degree_name'];
+        $school_name = $_POST['school_name'];
+        $qualification = $_POST['qualification'];
+        $location = $_POST['location'];
+        $e_month = $_POST['e_month'];
+        $e_year = $_POST['e_year'];
+
+        $this->load->model('Model_resume_format1');
+        $data_category = array(
+        	'degree_name'=>$degree_name,
+        	'school_name'=>$school_name,
+        	'qualification'=>$qualification,
+        	'location'=>$location,
+        	'e_month'=>$e_month,
+        	'e_year'=>$e_year,
+           );
+
+        $data_id = $this->Model_resume_format1->insert_resume_format1_eduation($data_category);
+        if ($data_id) {
+        	echo "Valid";
+        }
 	}
 }
 
