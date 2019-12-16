@@ -31,7 +31,7 @@
     <div class="card">
       <div class="card-header">
         <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-        Collapsible Group Item #2
+         Education
       </a>
       </div>
       <div id="collapseTwo" class="collapse" data-parent="#accordion">
