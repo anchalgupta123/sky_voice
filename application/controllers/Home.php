@@ -24,6 +24,11 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('resume/build_format1');
 	}
+	public function format1_form()
+	{
+		$this->load->view('resume/format1_form');
+	}
+
 	public function resume()
 	{
 		$this->load->view('public/resume');
