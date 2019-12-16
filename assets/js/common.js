@@ -72,6 +72,32 @@ function re_login()
     });
 }
 
+function student_login_check() {
+    user_name = $('#user_name').val();
+    password = $('#password').val();
+
+    $.ajax({
+        url: base_url+"Home/check_student_login", 
+        type : "POST",
+        data: {user_name : user_name , password : password},
+        success: function(result)
+        {
+            console.log(result);
+            // alert(result);
+            if (result == 'Valid')
+            {
+                $('#otp_details').html('<h2>OTP Details</h2><input type="text" name="" id="otp" class="form-control" placeholder="Enter otp"><button type="submit" class="btn btn-default submit">Submit</button>');
+                $('#email').attr('disabled',true);
+                $('#password').attr('disabled',true);
+                $('#btn_submit').attr('disabled',true);
+            }
+            else
+            {
+                alert('Please Enter Valid Username and Password');
+            }
+        }
+    });
+}
 
 function show_modal_update_status(id,name)
 {

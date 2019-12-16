@@ -48,6 +48,34 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('public/terms_conditions');
 	}
+	public function studentLogIn()
+	{
+		$this->load->view('public/student_login');
+	}
+	public function studentRegistratoin()
+	{
+		$this->load->view('public/student_registration');
+	}
+	public function check_student_login()
+	{
+		$user_name = $_POST['user_name'];
+		$password = md5($_POST['password']);
+
+		$this->load->model('Model_login');
+		$login_data = $this->Model_login->login_user($user_name,$password);
+
+		if ($login_data) 
+		{
+			$this->session->set_userdata('login_id',$login_data->id);
+			$this->session->set_userdata('login_email',$login_data->email);
+			$this->session->set_userdata('login_role',$login_data->role);
+			echo "Valid";
+		}
+		else
+		{
+			echo "Invalid";
+		}
+	}
 
 	public function send_mail_contact()
 	{

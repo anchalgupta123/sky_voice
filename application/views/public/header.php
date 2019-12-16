@@ -48,7 +48,7 @@
         <i class="fa fa-phone"></i> <a href="tel:+918770615331">+91 8770615331</a>
       </div>
       <div class="log float-right">
-       <a href="#"><button type="button" class="btn btn-success">Student Login</button></a>
+       <a href="<?php echo base_url();?>Home/studentLogIn"><button type="button" class="btn btn-success">Student Login</button></a>
        <a href="#"><button type="button" class="btn btn-danger">Company Login</button></a>
       </div>
   </div>
