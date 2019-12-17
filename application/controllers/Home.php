@@ -159,6 +159,10 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('resume/format1_form');
 	}
+	public function preview_format1_modal()
+	{
+		$this->load->view('resume/model_format1');	
+	}
 	public function add_contact_form()
 	{
         $first_name = $_POST['first_name'];
