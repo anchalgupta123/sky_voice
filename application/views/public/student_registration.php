@@ -1,6 +1,7 @@
 <?php $this->load->view('public/header');?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>frontend_assets/css/util.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>frontend_assets/css/main.css">
+<base href="<?php echo base_url();?>">
 <style type="text/css">
 	.emsg{
     color: red;
@@ -60,11 +61,9 @@
 						<input class="name input100" required id="confirm_pass" minlength="8" maxlength="8" type="password" name="pass" placeholder="Confirm Password" value="">
 						<span id="show_error" class="emsg hidden"></span>
 					</div>
-
-
 					
 					<div class="container-login100-form-btn p-t-70">
-						<button  id="sign_btn" onclick="check_login();" class="login100-form-btn">
+						<button type="button" id="sign_btn" onclick="student_register();" class="login100-form-btn">
 							Sign up	
 						</button>
 					</div>
@@ -85,7 +84,7 @@
   </main>
 
 <?php $this->load->view('public/footer');?>
-<?php $this->load->view('bars/js');?>
+
 <script type="text/javascript">
 $(document).ready(function(){
     var $regexname=/^([a-zA-Z0-9]{3,16})$/;
@@ -126,7 +125,39 @@ function validate(evt) {
   }
 }
 </script>
+<script type="text/javascript">
 
+  function student_register(){
+    user_name = $('#user_name').val();
+    mobile_no = $('#mobile_no').val();
+    e_mail = $('#e_mail').val();
+    password = $('#password').val();
+    
+    var formData = new FormData();
+    formData.append('user_name',user_name);
+    formData.append('mobile_no',mobile_no);
+    formData.append('e_mail',e_mail);
+    formData.append('password',password);
+    //alert('this is alertt');
+    $.ajax({
+        // url: "https://localhost/sky_voice/Category/add_contact_form",
+        url: base_url+"Home/student_register_form",  
+        type : "POST",
+        data: formData,
+        processData:false,
+        contentType:false,  
+        success: function(result)
+        { 
+            if (result == 'Valid') 
+            {
+                alert('Registration successfully!');
+                location.reload();
+            }
+        }
+    });
+
+}
+</script>
 
 <!-- this is my name vlidation code-->
 <!--

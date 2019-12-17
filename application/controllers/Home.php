@@ -70,8 +70,8 @@ class Home extends CI_Controller {
 		$user_name = $_POST['user_name'];
 		$password = md5($_POST['password']);
 
-		$this->load->model('Model_login');
-		$login_data = $this->Model_login->login_user($user_name,$password);
+		$this->load->model('Model_student_login');
+		$login_data = $this->Model_student_login->login_student($user_name,$password);
 
 		if ($login_data) 
 		{
@@ -85,7 +85,28 @@ class Home extends CI_Controller {
 			echo "Invalid";
 		}
 	}
+	public function student_register_form()
+	{
+        $user_name = $_POST['user_name'];
+        $mobile_no = $_POST['mobile_no'];
+        $e_mail = $_POST['e_mail'];
+        $real_password = $_POST['password'];
 
+        $this->load->model('Model_student_login');
+        $data_category = array(
+        	'user_name'=>$user_name,
+        	'mobile_no'=>$mobile_no,
+        	'e_mail'=>$e_mail,
+        	'real_password'=>$real_password,
+        	'password'=>md5($real_password),
+           );
+
+        $data_id = $this->Model_student_login->insert_student_registeration($data_category);
+        if ($data_id) {
+        	echo "Valid";
+
+	}
+    }
 	public function send_mail_contact()
 	{
 		$name = $_POST['name'];

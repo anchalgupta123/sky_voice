@@ -85,14 +85,12 @@ function student_login_check() {
             // alert(result);
             if (result == 'Valid')
             {
-                $('#otp_details').html('<h2>OTP Details</h2><input type="text" name="" id="otp" class="form-control" placeholder="Enter otp"><button type="submit" class="btn btn-default submit">Submit</button>');
-                $('#email').attr('disabled',true);
-                $('#password').attr('disabled',true);
-                $('#btn_submit').attr('disabled',true);
+                window.location.href = base_url + "Home";
             }
             else
             {
-                alert('Please Enter Valid Username and Password');
+                // alert('Please Enter Valid Username and Password');
+                document.getElementById('error_msg').innerHtml="plese enter valid E-mail Or Password";
             }
         }
     });

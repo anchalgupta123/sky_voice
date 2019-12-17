@@ -1,6 +1,9 @@
 <?php $this->load->view('public/header');?>
+<base href="<?php echo base_url();?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>frontend_assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>frontend_assets/css/main.css">
+
+
   <main id="main">
 
     <section id="banner_img">
@@ -28,6 +31,7 @@
 					<span class="login100-form-title">
 						Sign In
 					</span>
+					<span id="error_msg" style="color: red;font-size: 12px;"></span>
 
 					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
 						<input class="input100" id="user_name" type="text" name="username" placeholder="E-mail/Mobile No.">
@@ -50,7 +54,7 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button onclick="check_login();" class="login100-form-btn">
+						<button type="button" onclick="" class="login100-form-btn">
 							Sign in
 						</button>
 					</div>
@@ -77,6 +81,7 @@
 
 <?php $this->load->view('public/footer');?>
 <?php $this->load->view('bars/js');?>
+
 <script type="text/javascript">
       $( "#login_form" ).submit(function( event ) {
         student_login_check();
