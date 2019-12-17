@@ -2,37 +2,36 @@
 <html>
 <head>
   <title>Form</title>
-  
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/libs/bootstrap/dist/css/bootstrap.min.css">
+  <link href="<?php echo base_url();?>frontend_assets/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <base href="<?php echo base_url();?>">
 <style type="text/css">
   .main{
     border:1px solid gray;
-    box-shadow: 3px 6px 3px 6px #888888;
     margin-top: 20px;
     margin-bottom: 40px;
   }
   .main2{
      border:1px solid gray;
-    box-shadow: 3px 6px 3px 6px #888888;
+    
     margin-top: 20px;
     margin-left: 40px;
     margin-bottom: 40px;
 
   }
-  .card h4{
+  .accordion h4{
     color: blue;
   }
-  .card{
+  .accordion{
     margin-bottom: 10px;
   }
-  .card button{
+  .accordion button{
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 40px;
   }
-  .card input{
+  .accordion input{
     height: 50px;
   }
   .my-custom-scrollbar {
@@ -49,17 +48,13 @@
   <?php $this->load->view('public/header');?>
 <div class="container">
 <div class="row">
-<div class="col-md-6 table-wrapper-scroll-y my-custom-scrollbar main">
+<div class="col-md-8 table-wrapper-scroll-y my-custom-scrollbar main">
   <h2 style="margin-bottom: 20px;"><center>Build Resume</center></h2>
   <div id="accordion">
-    <div class="card">
-      <a class="card-link" data-toggle="collapse" href="#collapsOne">
-      <div class="card-header">
-          <h4>Contact Details</h4>
-      </div>
+      <a class="card-link" data-toggle="collapse" href="#collapsOne"><i class="plus-icon"></i>
        </a>
+       <h4> Contact Details</h4>
       <div id="collapsOne" class="collapse" data-parent="#accordion">
-        <div class="card-body"> 
          <div class="row col-md-12" style="margin-top:20px;">
              <input type="text" id="first_name" name="" placeholder="First Name" style="margin-left: 20px;" class="col-md-5" required>
              <input type="text" id="last_name" name="" placeholder="Last Name" style="margin-left: 30px;" class="col-md-5" required>
@@ -80,9 +75,7 @@
              <input type="text" id="country" placeholder="Country" style="margin-left: 30px;" class="col-md-5" required>
           </div>
           <button type="button" class="btn btn-primary float-right" onclick="add_contact_format1();">Save</button>
-        </div>
-      </div>
-    </div>  
+        </div> 
     <div class="card">
       <a class="card-link" data-toggle="collapse" href="#collapseTwo">
       <div class="card-header">
