@@ -76,7 +76,7 @@ function student_login_check() {
     password = $('#password').val();
 
     $.ajax({
-        url: base_url+"Home/check_student_login", 
+        url: base_url+"Login/check_student_login", 
         type : "POST",
         data: {user_name : user_name , password : password},
         success: function(result)
@@ -87,10 +87,41 @@ function student_login_check() {
             {
                 window.location.href = base_url + "Home";
             }
-            else
+            if (result == 'Invalid')
             {
                 // alert('Please Enter Valid Username and Password');
-                document.getElementById('error_msg').innerHtml="plese enter valid E-mail Or Password";
+                //document.getElementById('error_msg').innerHtml="plese enter valid E-mail Or Password";
+                $('.emsg').removeClass('hidden');
+                 $('.emsg').html("plese enter vaild Email Or password");
+                 $('.emsg').show();
+            }
+        }
+    });
+}
+function company_login_check()
+{
+    company_login = $('#company_login').val();
+    password = $('#password').val();
+
+    $.ajax({
+        url: base_url+"Login/check_company_login", 
+        type : "POST",
+        data: {company_login : company_login , password : password},
+        success: function(result)
+        {
+            console.log(result);
+            // alert(result);
+            if (result == 'Valid')
+            {
+                window.location.href = base_url + "Home";
+            }
+            if (result == 'Invalid')
+            {
+                // alert('Please Enter Valid Username and Password');
+                //document.getElementById('error_msg').innerHtml="plese enter valid E-mail Or Password";
+                $('.emsg').removeClass('hidden');
+                 $('.emsg').html("plese enter vaild Email Or password");
+                 $('.emsg').show();
             }
         }
     });

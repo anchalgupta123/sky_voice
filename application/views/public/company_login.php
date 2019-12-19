@@ -2,14 +2,7 @@
 <base href="<?php echo base_url();?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>frontend_assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>frontend_assets/css/main.css">
-<style type="text/css">
-	.emsg{
-    color: red;
-}
-.hidden {
-     display: none;
-}
-</style>
+
 
   <main id="main">
 
@@ -28,7 +21,7 @@
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class="section-header">
-                <h2>Student Login</h2>
+                <h2>Company Login</h2>
               </div>
             </div>
             <div class="limiter">
@@ -40,8 +33,9 @@
 					</span>
 					<!-- <span id="error_msg" style="color: red;font-size: 12px;"></span> -->
 					<span id="show_error" class="emsg hidden"></span>
+
 					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-						<input class="input100" id="user_name" type="text" name="username" placeholder="E-mail/Mobile No.">
+						<input class="input100" id="company_login" type="text" name="username" placeholder="E-mail/Mobile No.">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -56,7 +50,7 @@
 						</span>
 
 						<a href="#" class="txt2">
-							Password?
+						 Password?
 						</a>
 					</div>
 
@@ -71,7 +65,7 @@
 							Don’t have an account?
 						</span>
 
-						<a href="<?php echo base_url();?>Home/studentRegistratoin" class="txt3">
+						<a href="<?php echo base_url();?>Home/companyRegistratoin" class="txt3">
 							Sign up now
 						</a>
 					</div>
@@ -91,7 +85,7 @@
 
 <script type="text/javascript">
       $( "#login_form" ).submit(function( event ) {
-        student_login_check();
+        company_login_check();
         event.preventDefault();
       });
     </script>

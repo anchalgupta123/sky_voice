@@ -4,13 +4,11 @@ class Home extends CI_Controller {
 
 	public $current_date_time;
 	public $login_id;
-	public $login_role;
 
 	public function __construct()
 	{
 		parent::__construct();
 		$this->login_id = $this->session->userdata('login_id');
-		$this->login_role = $this->session->userdata('login_role');
 		if(function_exists('date_default_timezone_set')) {
 		    date_default_timezone_set("Asia/Kolkata");
 		}
@@ -52,7 +50,15 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('public/contact');
 	}
-
+	public function check_email_already_exist()
+	{
+		$email=$_POST['email'];
+		$this->load->model('Model_student_login');
+		$login_data = $this->Model_student_login->check_email_alredy_exist($email);
+		if ($login_data) {
+			echo "Valid";
+		}
+	}
 	public function terms_conditions()
 	{
 		$this->load->view('public/terms_conditions');
@@ -65,26 +71,37 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('public/student_registration');
 	}
-	public function check_student_login()
+	public function companyLogIn()
 	{
-		$user_name = $_POST['user_name'];
-		$password = md5($_POST['password']);
-
-		$this->load->model('Model_student_login');
-		$login_data = $this->Model_student_login->login_student($user_name,$password);
-
-		if ($login_data) 
-		{
-			$this->session->set_userdata('login_id',$login_data->id);
-			$this->session->set_userdata('login_email',$login_data->email);
-			$this->session->set_userdata('login_role',$login_data->role);
-			echo "Valid";
-		}
-		else
-		{
-			echo "Invalid";
-		}
+		$this->load->view('public/company_login');
 	}
+	public function companyRegistratoin()
+	{
+		$this->load->view('public/company_registration');
+	}
+	public function company_register_form()
+	{
+        $user_name = $_POST['user_name'];
+        $mobile_no = $_POST['mobile_no'];
+        $e_mail = $_POST['e_mail'];
+        $real_password = $_POST['password'];
+
+        $this->load->model('Model_company_login');
+        $data_category = array(
+        	'company_name'=>$user_name,
+        	'mobile_no'=>$mobile_no,
+        	'email'=>$e_mail,
+        	'real_password'=>$real_password,
+        	'password'=>md5($real_password),
+        	'created_date_time'=>$this->current_date_time
+           );
+
+        $data_id = $this->Model_company_login->insert_company_registeration($data_category);
+        if ($data_id) {
+        	echo "Valid";
+
+	}
+    }
 	public function student_register_form()
 	{
         $user_name = $_POST['user_name'];
@@ -99,6 +116,7 @@ class Home extends CI_Controller {
         	'e_mail'=>$e_mail,
         	'real_password'=>$real_password,
         	'password'=>md5($real_password),
+        	'created_date_time'=>$this->current_date_time
            );
 
         $data_id = $this->Model_student_login->insert_student_registeration($data_category);

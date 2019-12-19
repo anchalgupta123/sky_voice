@@ -1,8 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Model_student_login extends CI_Model {
+class Model_company_login extends CI_Model {
 
-	public $table ='student_login';
+	public $table ='company_login';
 
 	public function __construct()
 	{
@@ -22,7 +22,7 @@ class Model_student_login extends CI_Model {
 		$query = $this->db->query($sql);
 		return $query->row();
 	}
-	public function insert_student_registeration($data_category)
+	public function insert_company_registeration($data_category)
 	{
 		$this->db->insert($this->table, $data_category);
 		return $this->db->insert_id();

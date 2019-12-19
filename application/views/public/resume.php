@@ -79,12 +79,12 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class="section-header">
                 <h2>Resume</h2>
-                 <button type="button" class="btn btn-primary btn-lg" onclick="">BUILD YOUR RESUME</button>
+                 <button type="button" class="btn btn-primary btn-lg" id="hide_div" >BUILD YOUR RESUME</button>
               </div>
               </div>
             </div>
             <div class="container-fluid">
-              <div class="row format">
+              <div  id="hide" class="row format" style="display:none;">
                 <div class="col-md-4">
                  <div class="containerimg">
                  <img style="height:410px;width: 350px;border:1px solid gray;" src="<?php echo base_url();?>frontend_assets/img/resume/format111.jpg" class="image">
@@ -154,4 +154,12 @@
   </main>
 
 <?php $this->load->view('public/footer');?>
-
+<script src="<?php echo base_url();?>assets/libs/jquery/dist/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#hide_div").click(function(){
+    $("#hide").show();
+  });
+  
+});
+</script>

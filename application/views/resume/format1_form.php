@@ -326,6 +326,7 @@
 <div class="modal" id="modal_report"  tabindex="-1" role="dialog" aria-hidden="true">
   
 </div>
+</div>
 <?php $this->load->view('public/footer');?>
 <script type="text/javascript" src="<?php echo base_url();?>assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript">

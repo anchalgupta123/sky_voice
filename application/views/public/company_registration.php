@@ -44,7 +44,7 @@
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class="section-header">
-                <h2>Student Registration</h2>
+                <h2>Company Registration</h2>
               </div>
             </div>
             <div class="limiter">
@@ -52,11 +52,11 @@
       <div class="wrap-login100">
         <form  class="login100-form validate-form p-l-55 p-r-55 p-t-120">
           <span class="login100-form-title">
-            Registration
+             Registration
           </span>
 
           <div class=" wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-            <input class=" input100" id="user_name" type="text" value=""   placeholder="Full Name">
+            <input class=" input100" id="user_name" type="text" value="" placeholder="Company Name">
             <span id="show_error" class="emsg1 hidden"></span>
           </div>
           
@@ -186,7 +186,7 @@ function validate(evt) {
     
     if (user_name=='') {
       $('.emsg1').removeClass('hidden');
-      $('.emsg1').html("Plese enter your name");
+      $('.emsg1').html("Plese enter your company name");
       $('.emsg1').show();
     }
     else if (mobile_no=='') {
@@ -229,7 +229,7 @@ function validate(evt) {
     //alert('this is alertt');
     $.ajax({
         // url: "https://localhost/sky_voice/Category/add_contact_form",
-        url: base_url+"Home/student_register_form",  
+        url: base_url+"Home/company_register_form",  
         type : "POST",
         data: formData,
         processData:false,
@@ -238,7 +238,7 @@ function validate(evt) {
         { 
             if (result == 'Valid') 
             {
-             window.location.href=base_url+ "Home/studentLogIn";
+             window.location.href=base_url+ "Home/companyLogIn";
             }
         }
     });
