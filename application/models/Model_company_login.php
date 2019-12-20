@@ -9,16 +9,16 @@ class Model_company_login extends CI_Model {
 		parent::__construct();
 		$this->load->database();
 	}
-    public function login_student($user_name,$password)
+    public function login_company($company_login,$password)
 	{
-		$sql = "SELECT * FROM `$this->table` WHERE (`e_mail` = '$user_name' or `mobile_no` = '$user_name') and `password` = '$password' ";
+		$sql = "SELECT * FROM `$this->table` WHERE (`email` = '$company_login' or `mobile_no` = '$company_login') and `password` = '$password' ";
 		$query = $this->db->query($sql);
 
 		return $query->row();
 	}
-	public function check_email_alredy_exist($email)
+	public function check_email_alredy_exist_for_company($email)
 	{
-		$sql = "SELECT * FROM `$this->table` WHERE `e_mail` = '$email'";
+		$sql = "SELECT * FROM `$this->table` WHERE `email` = '$email'";
 		$query = $this->db->query($sql);
 		return $query->row();
 	}

@@ -2,7 +2,14 @@
 <base href="<?php echo base_url();?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>frontend_assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>frontend_assets/css/main.css">
-
+<style type="text/css">
+	.emsg{
+    color: red;
+}
+.hidden {
+     display: none;
+}
+</style>
 
   <main id="main">
 

@@ -38,7 +38,12 @@ class Home extends CI_Controller {
 	}
 	public function resume()
 	{
+		if (!$this->login_id) {
+			redirect('Home/studentLogIn');
+		}
+		else{
 		$this->load->view('public/resume');
+		}
 	}
 
 	public function services()
@@ -55,6 +60,15 @@ class Home extends CI_Controller {
 		$email=$_POST['email'];
 		$this->load->model('Model_student_login');
 		$login_data = $this->Model_student_login->check_email_alredy_exist($email);
+		if ($login_data) {
+			echo "Valid";
+		}
+	}
+	public function check_email_already_exist_for_company()
+	{
+		$email=$_POST['email'];
+		$this->load->model('Model_company_login');
+		$login_data = $this->Model_company_login->check_email_alredy_exist_for_company($email);
 		if ($login_data) {
 			echo "Valid";
 		}
@@ -93,6 +107,7 @@ class Home extends CI_Controller {
         	'email'=>$e_mail,
         	'real_password'=>$real_password,
         	'password'=>md5($real_password),
+        	'role'=>'Company',
         	'created_date_time'=>$this->current_date_time
            );
 

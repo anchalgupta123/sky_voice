@@ -135,7 +135,7 @@ $(document).ready(function(){
                 // else, do not display message
                 var email=$('#e_mail').val();
                 $.ajax({
-                  url: base_url+"Home/check_email_already_exist",  
+                  url: base_url+"Home/check_email_already_exist_for_company",  
                   type : "POST",
                   data: {email:email},
                   success: function(result)

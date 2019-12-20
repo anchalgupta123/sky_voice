@@ -113,7 +113,7 @@ function company_login_check()
             // alert(result);
             if (result == 'Valid')
             {
-                window.location.href = base_url + "Home";
+                window.location.href = base_url + "Dashboard";
             }
             if (result == 'Invalid')
             {

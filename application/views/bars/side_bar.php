@@ -299,6 +299,22 @@
                             </ul>
                         </li>
                       <?php } ?>
+                      <?php if ($login_role == 'Company') { ?>
+                      <li class="sidebar-item">
+                          <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                            <i class="fas fa-building"></i>
+                            <span class="hide-menu">Company </span>
+                          </a>
+                              <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item">
+                                  <a href="<?php echo base_url();?>Company" class="sidebar-link">
+                                    <i class="far fa-building"></i>
+                                    <span class="hide-menu"> All Company </span>
+                                  </a>
+                                </li>
+                              </ul>
+                        </li>
+                        <?php } ?>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Form</title>
+ <!--  <title>Form</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/libs/bootstrap/dist/css/bootstrap.min.css">
   <link href="<?php echo base_url();?>frontend_assets/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <base href="<?php echo base_url();?>">
+  <base href="<?php echo base_url();?>"> -->
+<?php $this->load->view('public/header');?>
 <style type="text/css">
   .main1{
     margin-top: 20px;
@@ -34,10 +35,27 @@
   .section_div{
     padding-bottom: 20px;
   }
+   .emsg{
+    color: red;
+    font-size: 13px;
+}
+#show_error1
+{
+  color: red;
+  font-size: 13px;
+}
+#show_error2
+{
+  color: red;
+  font-size: 13px;
+}
+.hidden {
+     display: none;
+}
 </style>
 </head>
 <body>
-  <?php $this->load->view('public/header');?>
+  
 <div class="container">
 <div class="row">
 <div class="col-md-7 main1">
@@ -57,10 +75,13 @@
          <div class="row col-md-12" style="margin-top:20px;">
              <input type="text" id="first_name" name="" placeholder="First Name" style="margin-left: 20px;" class="col-md-5" required>
              <input type="text" id="last_name" name="" placeholder="Last Name" style="margin-left: 60px;" class="col-md-5" required>
+              <span id="show_error" class="emsg hidden"></span>
           </div>
           <div class="row col-md-12" style="margin-top:20px;">
              <input type="text" id="phone" placeholder="Phone" style="margin-left: 20px;" class="col-md-5" required>
-             <input type="email" id="email" placeholder="Email" style="margin-left: 60px;" class="col-md-5" required>
+             
+             <input type="email" id="email" placeholder="Email" style="margin-left: 60px;" class="  col-md-5" required>
+             <span id="show_error1" class=" hidden"></span>
           </div>
           <div class="row col-md-12 input-md" style="margin-top:20px;">
              <input type="text" id="address" placeholder="Address" style="margin-left: 20px;" class="col-md-11" required>
@@ -329,6 +350,7 @@
 </div>
 <?php $this->load->view('public/footer');?>
 <script type="text/javascript" src="<?php echo base_url();?>assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+
 <script type="text/javascript">
   function add_contact_format1()
 { 
@@ -342,6 +364,32 @@
     pincode  = $('#pincode').val();
     country  = $('#country').val();
     
+    if (first_name=='') {
+      document.getElementById("show_error").style.marginLeft = "18px";
+      $('.emsg').html("plese enter the first name");
+      $('.emsg').show();
+    }
+    else if(last_name=='')
+    {
+      document.getElementById("show_error").style.marginLeft = "335px";
+      $('.emsg').html("plese enter the last name");
+      $('.emsg').show();
+    }
+    else if(email=='')
+    {
+      document.getElementById("show_error1").style.marginLeft = "335px";
+      $('#show_error1').html("plese enter the E-mail Id");
+      $('.emsg').hide();
+      $('#show_error1').show();
+    }
+    else if(phone=='')
+    {
+      document.getElementById("show_error1").style.marginLeft = "18px";
+      $('#show_error1').html("plese enter the Mobile No.");
+      $('.emsg').hide();
+      $('#show_error1').show();
+    }
+    else{
 
     var formData = new FormData();
     formData.append('first_name',first_name);
@@ -370,6 +418,7 @@
             }
         }
     });
+  }
 }
 
 function add_objective_format1()

@@ -82,7 +82,27 @@ class Login extends CI_Controller {
 			echo "Invalid";
 		}
 	}
-	public function 
+	public function check_company_login()
+	{
+		$company_login = $_POST['company_login'];
+		$password = md5($_POST['password']);
+
+		$this->load->model('Model_company_login');
+		$login_data = $this->Model_company_login->login_company($company_login,$password);
+
+		if ($login_data) 
+		{
+			$this->session->set_userdata('login_id',$login_data->id);
+			$this->session->set_userdata('login_email',$login_data->email);
+			$this->session->set_userdata('login_company_name',$login_data->company_name);
+			$this->session->set_userdata('login_role',$login_data->role);
+			echo "Valid";
+		}
+		else
+		{
+			echo "Invalid";
+		}
+	} 
 	public function logout()
 	{
 		$this->session->sess_destroy();
@@ -92,6 +112,11 @@ class Login extends CI_Controller {
 	{
 		$this->session->sess_destroy();
 		redirect('Home/studentLogIn','refresh');
+	}
+	public function company_logout()
+	{
+		$this->session->sess_destroy();
+		redirect('Home/companyLogIn','refresh');
 	}
 
 }
