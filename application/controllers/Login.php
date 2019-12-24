@@ -72,9 +72,9 @@ class Login extends CI_Controller {
 
 		if ($login_data) 
 		{
-			$this->session->set_userdata('login_id',$login_data->id);
-			$this->session->set_userdata('login_email',$login_data->e_mail);
-			$this->session->set_userdata('login_user_name',$login_data->user_name);
+			$this->session->set_userdata('login_std_id',$login_data->id);
+			$this->session->set_userdata('login_std_email',$login_data->e_mail);
+			$this->session->set_userdata('login_std_user_name',$login_data->user_name);
 			echo "Valid";
 		}
 		else
@@ -92,8 +92,8 @@ class Login extends CI_Controller {
 
 		if ($login_data) 
 		{
-			$this->session->set_userdata('login_id',$login_data->id);
-			$this->session->set_userdata('login_email',$login_data->email);
+			$this->session->set_userdata('login_com_id',$login_data->id);
+			$this->session->set_userdata('login_com_email',$login_data->email);
 			$this->session->set_userdata('login_company_name',$login_data->company_name);
 			$this->session->set_userdata('login_role',$login_data->role);
 			echo "Valid";

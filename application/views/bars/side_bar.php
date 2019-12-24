@@ -1,5 +1,6 @@
 <!-- ========== SIDE BAR ========== -->
 <!-- <?php $login_role = $this->session->userdata('login_role'); ?>
+<?php $login_role = $this->session->userdata('login_role'); ?>
 <div class="col-md-3 left_col">
   <div class="left_col scroll-view">
     <div class="navbar nav_title" style="border: 0;">
@@ -77,13 +78,14 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="p-t-30">
-                        <li class="sidebar-item"> 
-                          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url();?>dashboard" aria-expanded="false">
+                        
+                        <?php if ($login_role == 'Admin') { ?>
+                          <li class="sidebar-item"> 
+                          <a class="sidebar-link  waves-effect waves-dark sidebar-link" href="<?php echo base_url();?>dashboard" aria-expanded="false">
                             <i class="mdi mdi-view-dashboard"></i>
                             <span class="hide-menu">Dashboard</span>
                           </a>
                         </li>
-                        <?php if ($login_role == 'Admin') { ?>
                         <li class="sidebar-item">
                           <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                            <i class="fas fa-users"></i>
@@ -300,19 +302,23 @@
                         </li>
                       <?php } ?>
                       <?php if ($login_role == 'Company') { ?>
-                      <li class="sidebar-item">
-                          <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                            <i class="fas fa-building"></i>
-                            <span class="hide-menu">Company </span>
+                        <li class="sidebar-item"> 
+                          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url();?>company_dashboard" aria-expanded="false">
+                            <i class="mdi mdi-view-dashboard"></i>
+                            <span class="hide-menu">Dashboard</span>
                           </a>
-                              <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item">
-                                  <a href="<?php echo base_url();?>Company" class="sidebar-link">
-                                    <i class="far fa-building"></i>
-                                    <span class="hide-menu"> All Company </span>
-                                  </a>
-                                </li>
-                              </ul>
+                        </li>
+                        <li class="sidebar-item">
+                          <a href="<?php echo base_url();?>Company_dashboard/view_profile" class="sidebar-link">
+                           <i class=" fas fa-user"></i>
+                            <span class="hide-menu">View Profile</span>
+                          </a>
+                        </li>
+                        <li class="sidebar-item">
+                          <a href="<?php echo base_url();?>Company_dashboard/view_job_post" class="sidebar-link">
+                           <i class="fas fa-briefcase"></i>
+                            <span class="hide-menu">Post a Job</span>
+                          </a>
                         </li>
                         <?php } ?>
                     </ul>

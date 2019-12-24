@@ -93,7 +93,10 @@ class Dashboard extends CI_Controller {
 		$this->load->view('dashboard',$data);
 	}
 
-	
+	public function company_dashboard()
+    {
+        $this->load->view('company_dashboard');
+    }
 
 	
 

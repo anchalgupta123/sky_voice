@@ -48,14 +48,14 @@
         <i class="fa fa-phone"></i> <a href="tel:+918770615331">+91 8770615331</a>
       </div>
       <div class="log float-right">
-       <?php $this->login_id = $this->session->userdata('login_id');
+       <?php $this->login_std_id = $this->session->userdata('login_std_id');
        $user_name=$this->session->userdata('login_user_name');
-       if (!$this->login_id) {?>
+       if (!$this->login_std_id) {?>
          <a href="<?php echo base_url();?>Home/studentLogIn"><button type="button" class="btn btn-success">Student Login</button></a>
          <a href="<?php echo base_url();?>Home/companyLogIn"><button type="button" class="btn btn-danger">Company Login</button></a>
         <?php }
         else
-          {?><a><?php echo $user_name;?></a>
+          {?><a><?php echo $login_std_user_name;?></a>
             <a href="<?php echo base_url();?>Login/student_logout"><button type="button" class="btn btn-success">Logout</button></a>
           <?php } ?>
        

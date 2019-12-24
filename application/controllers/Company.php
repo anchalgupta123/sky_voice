@@ -75,7 +75,10 @@ class Company extends CI_Controller {
 			echo "Valid";
 		}
 	}
-
+	public function view_profile()
+	{
+		$this->load->view('company/view_profile');
+	}
 }
 
 /* End of file Company.php */

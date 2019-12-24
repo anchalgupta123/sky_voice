@@ -3,12 +3,12 @@
 class Home extends CI_Controller {
 
 	public $current_date_time;
-	public $login_id;
+	public $login_std_id;
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->login_id = $this->session->userdata('login_id');
+		$this->login_std_id = $this->session->userdata('login_std_id');
 		if(function_exists('date_default_timezone_set')) {
 		    date_default_timezone_set("Asia/Kolkata");
 		}

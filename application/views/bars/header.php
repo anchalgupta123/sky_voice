@@ -26,6 +26,8 @@
 <!-- ========== HEADER ========== -->
 <?php $login_email = $this->session->userdata('login_email'); ?>
 <?php $login_role = $this->session->userdata('login_role'); ?>
+<?php $login_com_email = $this->session->userdata('login_com_email'); ?>
+<?php $login_role = $this->session->userdata('login_role'); ?>
  <header class="topbar" data-navbarbg="skin5">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark">
                 <div class="navbar-header" data-logobg="skin5">
@@ -47,10 +49,10 @@
                         <li class="nav-item d-none d-md-block"><a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar"><i class="mdi mdi-menu font-24"></i></a></li>
                     </ul>
                     <ul class="navbar-nav float-right">
-                      <?php if ($login_role == 'Company') { ?>
+                      <?php if ($login_role  == 'Company') { ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url();?>assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31">
-                                 <?php echo $login_email; ?>
+                                 <?php echo $login_com_email; ?>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated">
                                 <a class="dropdown-item" href="<?php echo base_url();?>Login/company_logout"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
