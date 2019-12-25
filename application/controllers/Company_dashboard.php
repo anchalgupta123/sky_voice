@@ -41,7 +41,7 @@ class Company_dashboard extends CI_Controller {
 		$mobile_no  = $_POST['mobile_no'];
 		$no_of_emp   = $_POST['no_of_emp'];
 		$buss_category   = $_POST['buss_category'];
-		$mobile_no2   = $_POST['mobile_no2'];
+		$update_hr_contact_no   = $_POST['update_hr_contact_no'];
 		$update_address   = $_POST['update_address'];
 		$update_zip_code   = $_POST['update_zip_code'];
 		$update_city   = $_POST['update_city'];
@@ -55,7 +55,7 @@ class Company_dashboard extends CI_Controller {
         	'hr_email'=>$hr_email,
         	'no_of_curr_emp'=>$no_of_emp,
         	'business_category'=>$buss_category,
-        	'mobile_no2'=>$mobile_no2,
+        	'hr_contact_no'=>$update_hr_contact_no,
         	'address'=>$update_address,
         	'zip_code'=>$update_zip_code,
         	'city' =>$update_city,
@@ -66,6 +66,7 @@ class Company_dashboard extends CI_Controller {
         	echo "Valid";
         }
 	}
+	
 	public function view_job_post()
 	{
 		$this->load->model('Model_company_posted_job');

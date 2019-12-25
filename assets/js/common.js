@@ -1320,7 +1320,7 @@ function update_company_profile()
     mobile_no = $('#mobile_no').val();
     no_of_emp = $('#no_of_emp').val();
     buss_category = $('#buss_category').val();
-    mobile_no2 = $('#mobile_no2').val();
+    update_hr_contact_no = $('#update_hr_contact_no').val();
     update_address = $('#update_address').val();
     update_zip_code = $('#update_zip_code').val();
     update_city = $('#update_city').val();
@@ -1333,7 +1333,7 @@ function update_company_profile()
     formData.append('mobile_no',mobile_no);
     formData.append('no_of_emp',no_of_emp);
     formData.append('buss_category',buss_category);
-    formData.append('mobile_no2',mobile_no2);
+    formData.append('update_hr_contact_no',update_hr_contact_no);
     formData.append('update_address',update_address);
     formData.append('update_zip_code',update_zip_code);
     formData.append('update_city',update_city);
@@ -1349,6 +1349,56 @@ function update_company_profile()
             $('#preloader').hide();   
             if (result == 'Valid') 
             {
+               location.reload();
+            }
+        }
+    });
+}
+
+function insert_company_detail_by_admin()
+{
+    $('#preloader').show();
+    c_name = $('#c_name').val();
+    hr_name = $('#hr_name').val();
+    hr_email = $('#hr_email').val();
+    email = $('#email').val();
+    mobile_no = $('#mobile_no').val();
+    unique_id = $('#unique_id').val();
+    password = $('#password').val();
+    no_of_emp = $('#no_of_emp').val();
+    buss_category = $('#buss_category').val();
+    update_hr_contact_no = $('#update_hr_contact_no').val();
+    update_address = $('#update_address').val();
+    update_zip_code = $('#update_zip_code').val();
+    update_city = $('#update_city').val();
+
+    var formData = new FormData();
+    formData.append('c_name',c_name);
+    formData.append('hr_name',hr_name);
+    formData.append('hr_email',hr_email);
+    formData.append('email',email);
+    formData.append('unique_id',unique_id);
+    formData.append('password',password);
+    formData.append('mobile_no',mobile_no);
+    formData.append('no_of_emp',no_of_emp);
+    formData.append('buss_category',buss_category);
+    formData.append('update_hr_contact_no',update_hr_contact_no);
+    formData.append('update_address',update_address);
+    formData.append('update_zip_code',update_zip_code);
+    formData.append('update_city',update_city);
+ 
+    $.ajax({
+        url: base_url+"Company/insert_company_detail", 
+        type : "POST",
+        data: formData,
+        processData:false,
+        contentType:false,  
+        success: function(result)
+        {
+            $('#preloader').hide();   
+            if (result == 'Valid') 
+            {
+              
                location.reload();
             }
         }
@@ -1411,9 +1461,6 @@ function delete_technical_hindi_category(id)
     }
 
 }
-
-
-
 
 function change_state()
 {

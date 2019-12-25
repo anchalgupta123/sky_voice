@@ -41,11 +41,11 @@
                         <div class="form-group row">
                             <label for="lname" class="col-sm-2 text-right control-label col-form-label">E-mail:-</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" id="email" value="<?php echo $singel_company->email;?>">
+                                <input type="text" disabled="" class="form-control" id="email" value="<?php echo $singel_company->email;?>">
                             </div>
-                            <label for="lname" class="col-sm-2 text-right control-label col-form-label">Mobile No.1:-</label>
+                            <label for="lname" class="col-sm-2 text-right control-label col-form-label">HR contact no.:-</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" id="mobile_no" value="<?php echo $singel_company->mobile_no;?>">
+                                <input type="text" class="form-control" id="update_hr_contact_no" value="<?php echo $singel_company->hr_contact_no;?>">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -59,9 +59,9 @@
                             <div class="col-sm-3">
                                 <input type="text" class="form-control" id="buss_category" value="<?php echo $singel_company->business_category;?>">
                             </div>
-                            <label for="lname" class="col-sm-2 text-right control-label col-form-label">Mobile No.2:-</label>
+                            <label for="lname" class="col-sm-2 text-right control-label col-form-label">Mobile No.:-</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" id="mobile_no2" value="<?php echo $singel_company->mobile_no2;?>">
+                                <input type="text" class="form-control" id="mobile_no" value="<?php echo $singel_company->mobile_no;?>">
                             </div>
                         </div>
                         <div class="form-group row">

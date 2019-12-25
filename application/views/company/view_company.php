@@ -20,8 +20,88 @@
          <div class="container-fluid">
             <div class="card">
               <h5 class="card-title">
-                      <a href="javascript:void(0);" style="float: right;" class="btn btn-primary" onclick="add_company_modal();"><i class="fa fa-plus"></i> Add Company</a>
+                      <a href="javascript:void(0);" style="float: right;" class="btn btn-primary" onclick="show_add_company_div();"><i class="fa fa-plus"></i> Add Company</a>
                     </h5>
+                    
+                    <div id="show_div" style="display: none;" class="card">
+                <form class="form-horizontal">
+                    <div class="card-body">
+                        <h2 class="card-title" style="text-align: center;">Company Info</h2>
+                        <div class="form-group row" style="margin-top: 20px;">
+                            <label for="lname" class="col-sm-2 text-right control-label col-form-label">Company Name:-</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="c_name" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lname" class="col-sm-2 text-right control-label col-form-label">HR Name:-</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="hr_name" value="" >
+                            </div>
+                            <label for="lname" class="col-sm-2 text-right control-label col-form-label">HR Email:-</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="hr_email" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                          
+                          <label for="lname" class="col-sm-2 text-right control-label col-form-label">HR contact no.:-</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="update_hr_contact_no" value="">
+                            </div>
+                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">No.of Currently Working Employee:-</label>
+                            <div class="col-sm-2">
+                                <input type="number" class="form-control" id="no_of_emp" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                             <label for="lname" class="col-sm-2 text-right control-label col-form-label">E-mail:-</label>
+                            <div class="col-sm-3">
+                                <input type="text"  class="form-control" id="email" value="">
+                            </div>
+                             <label for="lname" class="col-sm-2 text-right control-label col-form-label">Password:-</label>
+                            <div class="col-sm-3">
+                                <input type="text"  class="form-control" id="password" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lname" class="col-sm-2 text-right control-label col-form-label">Business Category:-</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="buss_category" value="">
+                            </div>
+                            <label for="lname" class="col-sm-2 text-right control-label col-form-label">Mobile No.:-</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="mobile_no" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lname" class="col-sm-2 text-right control-label col-form-label">Address:-</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="update_address" value="">
+                            </div>
+                            <label for="lname" class="col-sm-2 text-right control-label col-form-label">Unique Id:-</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="unique_id" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lname" class="col-sm-2 text-right control-label col-form-label">Zip Code:-</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="update_zip_code" value="">
+                            </div>
+                            <label for="lname" class="col-sm-2 text-right control-label col-form-label">City:-</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="update_city" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-top">
+                        <div class="card-body">
+                            <button type="button"  style="float: right;" onclick="insert_company_detail_by_admin();" class="btn btn-default ">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="zero_config" class="table table-striped table-bordered">
@@ -40,14 +120,26 @@
                         <tbody>
                           <?php foreach ($companies as $key){ ?>
                           <tr>
-                            <td><?php echo $key->name; ?></td>
-                            <td><?php echo $key->company_location; ?></td>
+                            <td><?php echo $key->company_name; ?></td>
+                            <td><?php echo $key->city; ?></td>
                             <td><?php echo $key->hr_name; ?></td>
                             <td><?php echo $key->hr_email; ?></td>
                             <td><?php echo $key->hr_contact_no; ?></td>
-                            <td><?php echo $key->unique_id; ?></td>
-                            <td><?php echo $key->category; ?></td>
-                            <td><button class="btn btn-xs btn-warning" onclick="edit_company_modal('<?php echo $key->id; ?>');">Edit</button></td>
+                            <td><?php if ($key->unique_id!='') {
+                             echo $key->unique_id;
+                            } else 
+                            {
+                              echo "Direct Login";
+                            }?></td>
+                            <td><?php echo $key->business_category; ?></td>
+                            <td>
+                              <?php if ($key->unique_id!='') {?>
+                           <button class="btn btn-xs btn-warning" onclick="edit_company_modal('<?php echo $key->id; ?>');">Edit</button>
+                            <?php } else 
+                            {
+                              echo "Not To be edited";
+                            }?>
+                             </td>
                           </tr>
                           <?php } ?>
                         </tbody>
@@ -79,6 +171,10 @@
               $('#modal_report').modal('show');
           }
         });
+      }
+      function show_add_company_div()
+      {
+        $('#show_div').toggle();
       }
       function edit_company_modal(id)
       {

@@ -2,17 +2,20 @@
 <html>
 <head>
 	<title></title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Latest compiled and minified CSS -->
    <?php $this->load->view('resume/head');?>
 
 <style type="text/css">
     .main{
-    	width: 750px;
-        box-shadow: 3px 6px 3px 6px #888888;
+      margin-top: 3%;
+      /*box-shadow: 3px 6px 3px 6px #888888;*/
+      height:350px;
+      margin-bottom: 3%;
+      display: inline-block; 
     }
 	.sum{
 		margin-top: 5%;
-		/*font-family: 'Arial',sans-serif;*/
 	}
 	hr{
 		border: 1px solid gray;
@@ -23,29 +26,29 @@
 <body>
    <div class="container main">
    	<div class="row">
-   		<div class="col-md-12 text-center">
+   		<div class="col-md-12 col-sm-12 col-xs-12 text-center">
    			<h1>Jane Rae</h1>
    			<h6>Indore, Madhya Pradesh <br>abc@gmail.com</h6>
    		</div>
    	</div>
    	<div class="row sum">
-   		<div class="col-md-12">
+   		<div class="col-md-12 col-sm-12 col-xs-12">
    			<h3>Objective</h3>
    			<hr>
    			<h6>To gain a position at an organization which will inspire me to flourish my skills and encourage me to apply my strong sense of observation, dedication and responsibility. </h6>
    		</div>
    	</div>
    	<div class="row sum">
-   		<div class="col-md-12">
+   		<div class="col-md-12 col-sm-12 col-xs-12">
    			<h3>Education</h3>
    			<hr>
    		</div>
-   			<div class="col-md-8">
+   			<div class="col-md-8 col-sm-8 col-xs-8">
    			 <h6>Saraswati Higher Secondary School, Nagod<br>
    			 Bachelor's of computer application(BCA) <br> Master's of Computer Application(MCA)</h6>
    			</div>
    			<div class="col-md-4">
-   		    <h6 style="padding-left: 60%;">July,2014 <br> July 2017 <br> July 2019</h6>
+   		    <h6 style="padding-left: 35%;">July,2014 <br> July 2017 <br> July 2019</h6>
    			</div>
    	</div>
    	<div class="row sum">
@@ -70,11 +73,9 @@
 			<hr>
 		</div>
 		<div class="col-md-12" >
-			<h6>
-         <ul>
+         <ul style="font-weight: 500;">
            <li>Music & Dance </li>      
          </ul>
-         </h6>
 		</div>
 				 
     </div>
@@ -84,7 +85,7 @@
    			<hr>
    		</div>
    		<div class="col-md-4">
-   			<ul><h6>
+   			<ul  style="font-weight: 500;">
    				<li>HTML</li>
    				<li>CSS</li>
    				<li>BOOTSTRAP</li>
@@ -92,7 +93,6 @@
    				<li>WORDPRESS</li>
    				<li>CODIGNITER</li>
    				<li>PHP</li>
-               </h6>
    			</ul>
    		</div>
    	</div>
@@ -102,7 +102,7 @@
    			<hr>
    		</div>
    		<div class="col-md-4">
-   			<ul><h6>
+   			<ul style="font-weight: 500;">
    				<li>HINDI</li>
    				<li>ENGLISH</li>
    			</h6>

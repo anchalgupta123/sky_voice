@@ -87,8 +87,8 @@ class Login extends CI_Controller {
 		$company_login = $_POST['company_login'];
 		$password = md5($_POST['password']);
 
-		$this->load->model('Model_company_login');
-		$login_data = $this->Model_company_login->login_company($company_login,$password);
+		$this->load->model('Model_company_master');
+		$login_data = $this->Model_company_master->login_company($company_login,$password);
 
 		if ($login_data) 
 		{

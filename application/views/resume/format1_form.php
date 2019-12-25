@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
  <!--  <title>Form</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/libs/bootstrap/dist/css/bootstrap.min.css">
@@ -51,6 +52,14 @@
 }
 .hidden {
      display: none;
+}
+.my-custom-scrollbar {
+position: relative;
+height: 350px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
 }
 </style>
 </head>
@@ -141,7 +150,7 @@
               <option>12th</option>
               <option>10th</option>
             </select>
-             <input type="text" name="" id="location" placeholder="Location" style="margin-left: 60px;" class="col-md-5">
+             <input type="text" name="" id="c_location" placeholder="Location" style="margin-left: 60px;" class="col-md-5">
           </div>
           <div class="row col-md-12" style="margin-top:20px;">
              <select class=" col-md-5" id="e_month" style="margin-left: 20px;height:50px;" data-toggle="collapse">
@@ -178,21 +187,21 @@
       <div id="collapseFour" class="collapse" data-parent="#accordion">
         <div class="card-body">
           <div class="row col-md-12" style="margin-top:20px;">
-             <input type="text" name="" placeholder="Job Title" style="margin-left: 20px;" class="col-md-5">
-             <input type="text" name="" placeholder="Company Name" style="margin-left: 56px;" class="col-md-5">
+             <input type="text" name="" id="job_title" placeholder="Job Title" style="margin-left: 20px;" class="col-md-5">
+             <input type="text" name="" id="company_name" placeholder="Company Name" style="margin-left: 56px;" class="col-md-5">
           </div>
           <div class="row col-md-11" style="margin-top:20px;">
-             <input type="text" name="" placeholder="Location" style="margin-left: 20px;" class="col-md-12">
+             <input type="text" name="" id="job_location" placeholder="Location" style="margin-left: 20px;" class="col-md-12">
           </div>
           <div class="row col-md-12" style="margin-top:20px;">
-             <label class="col-md-2" style="margin-left: 10px;">From:</label>
-             <select class=" col-md-4" style="margin-left: 30px;height:50px;" data-toggle="collapse">
+             <label class="col-md-2"  style="margin-left: 10px;">From:</label>
+             <select class=" col-md-4" id="emp_from_month" style="margin-left: 30px;height:50px;" data-toggle="collapse">
               <option>December</option>
               <option>November</option>
               <option>October</option>
               <option>September</option>
             </select>
-            <select class=" col-md-4" style="margin-left: 30px;" data-toggle="collapse">
+            <select class=" col-md-4" id="emp_from_year" style="margin-left: 30px;" data-toggle="collapse">
               <option>2014</option>
               <option>2015</option>
               <option>2016</option>
@@ -203,13 +212,13 @@
           </div> 
           <div class="row col-md-12" style="margin-top:20px;">
              <label class="col-md-2" style="margin-left: 20px;">To:</label>
-             <select class=" col-md-4" style="margin-left: 20px;height:50px;" data-toggle="collapse">
+             <select class=" col-md-4"id="emp_to_month" style="margin-left: 20px;height:50px;" data-toggle="collapse">
               <option>December</option>
               <option>November</option>
               <option>October</option>
               <option>September</option>
             </select>
-            <select class=" col-md-4" style="margin-left: 30px;" data-toggle="collapse">
+            <select class=" col-md-4" id="emp_to_year" style="margin-left: 30px;" data-toggle="collapse">
               <option>2014</option>
               <option>2015</option>
               <option>2016</option>
@@ -219,7 +228,7 @@
             </select>
           </div>
           <div style="margin-top: 10px;margin-bottom: 20px;">
-          <button type="button" class="btn btn-primary float-right" style="margin-bottom: 20px;">Save</button>
+          <button type="button" class="btn btn-primary float-right" style="margin-bottom: 20px;"  onclick="add_employment_format1();">Save</button>
           </div>
         </div>
       </div>
@@ -236,10 +245,10 @@
       </div>
       <div id="collapseFive" class="collapse" data-parent="#accordion">
         <div class="card-body">
-          <input type="text" name="" placeholder="Hobbies" style="margin-left: 20px;" class="col-md-11">
+          <input type="text" name="" id="hobbie" placeholder="Hobbies" style="margin-left: 20px;" class="col-md-11">
         </div>
         <div style="margin-top: 10px;margin-bottom: 20px;">
-        <button type="button" class="btn btn-primary float-right" style="margin-bottom: 20px;">Save</button>
+        <button type="button" class="btn btn-primary float-right" style="margin-bottom: 20px;"  onclick="add_hobbie_format1();">Save</button>
         </div>
       </div>
     </div>
@@ -255,10 +264,10 @@
       </div>
       <div id="collapseSix" class="collapse" data-parent="#accordion">
         <div class="card-body">
-          <input type="text" name="" placeholder="Skills" style="margin-left: 20px;" class="col-md-11">
+          <input type="text" name="" id="skills" placeholder="Skills" style="margin-left: 20px;" class="col-md-11">
         </div>
         <div style="margin-top: 10px;margin-bottom: 20px;">
-        <button type="button" class="btn btn-primary float-right" style="margin-bottom: 20px;">Save</button>
+        <button type="button" class="btn btn-primary float-right" style="margin-bottom: 20px;"  onclick="add_skills_format1();">Save</button>
         </div>
       </div>
     </div>
@@ -275,10 +284,10 @@
       </div>
       <div id="collapseSeven" class="collapse" data-parent="#accordion">
         <div class="card-body">
-          <input type="text" name="" placeholder="Language" style="margin-left: 20px;" class="col-md-11">
+          <input type="text" name="" id="language" placeholder="Language Known..." style="margin-left: 20px;" class="col-md-11">
         </div>
         <div style="margin-top: 10px;margin-bottom: 20px;">
-        <button type="button" class="btn btn-primary float-right" style="margin-bottom: 20px;">Save</button>
+        <button type="button" class="btn btn-primary float-right" style="margin-bottom: 20px;"  onclick="add_language_format1();">Save</button>
         </div>
       </div>
     </div>
@@ -295,19 +304,19 @@
       <div id="collapseEight" class="collapse" data-parent="#accordion">
         <div class="card-body">
           <div class="row col-md-12" style="margin-top:20px;">
-             <input type="text" name="" placeholder="Name" style="margin-left: 20px;" class="col-md-5">
-             <input type="text" name="" placeholder="relationship" style="margin-left: 30px;" class="col-md-5">
+             <input type="text" name="" id="ref_name" placeholder="Name" style="margin-left: 20px;" class="col-md-5">
+             <input type="text" name="" id="relationship" placeholder="relationship" style="margin-left: 30px;" class="col-md-5">
           </div>
           <div class="row col-md-12" style="margin-top:20px;">
-             <input type="text" name="" placeholder="Company" style="margin-left: 20px;" class="col-md-5">
-             <input type="text" name="" placeholder="Email" style="margin-left: 30px;" class="col-md-5">
+             <input type="text" name="" id="ref_company_name" placeholder="Company Name" style="margin-left: 20px;" class="col-md-5">
+             <input type="text" name="" id="ref_company_email" placeholder="Company Email" style="margin-left: 30px;" class="col-md-5">
           </div>
           <div class="row col-md-12" style="margin-top:20px;">
-             <input type="text" name="" placeholder="phone" style="margin-left: 20px;" class="col-md-5">
-             <input type="text" name="" placeholder="Address" style="margin-left: 30px;" class="col-md-5">
+             <input type="text" name="" id="ref_company_phone" placeholder="Company Phone Number" style="margin-left: 20px;" class="col-md-5">
+             <input type="text" name="" id="ref_company_address" placeholder="Company Address" style="margin-left: 30px;" class="col-md-5">
           </div>
           <div style="margin-top: 10px;margin-bottom: 20px;">
-          <button type="button" class="btn btn-primary float-right" style="margin-bottom: 20px;">Save</button>
+          <button type="button" class="btn btn-primary float-right" style="margin-bottom: 20px;" onclick="add_reference_format1();">Save</button>
           </div>
         </div>
       </div>
@@ -325,10 +334,10 @@
       <div id="collapseNine" class="collapse" data-parent="#accordion">
         <div class="card-body">
           <div class="row col-md-12" style="margin-top:20px;">
-             <input type="text" name="" placeholder="phone" style="margin-left: 20px;" class="col-md-11">
+             <input type="text" name="" id="awards" placeholder="Awards" style="margin-left: 20px;" class="col-md-11">
           </div>
           <div style="margin-top: 10px;margin-bottom: 20px;">
-          <button type="button" class="btn btn-primary float-right" style="margin-bottom: 20px;">Save</button>
+          <button type="button" class="btn btn-primary float-right" style="margin-bottom: 20px;" onclick="add_awards_format1();">Save</button>
           </div>
         </div>
      </div>
@@ -336,7 +345,8 @@
 </div>
 </div>
     <div class="col-md-5 main2">
-      <div class="col-md-10" style="height: 350px;width:400px;margin-top:60px;border:1px solid black;">
+      <div class="col-md-10 table-wrapper-scroll-y my-custom-scrollbar" style="height: 350px;width:400px;margin-top:60px;border:1px solid gray;">
+        <?php $this->load->view('resume/format1');?>
       </div>
       <div class="col-md-12">
         <center><button type="button" class="btn btn-primary btn-lg" style="border-radius:30px;font-size: 22px;margin-top: 20px;" onclick="preview_format1_modal();">PREVIEW</button></center>
@@ -427,9 +437,9 @@ function add_objective_format1()
 
     var formData = new FormData();
     formData.append('objective',objective);
-    //alert('this is alertt');
+   
     $.ajax({
-        // url: "https://localhost/sky_voice/Category/add_contact_form",
+      
         url: base_url+"Home/add_objective_form",  
         type : "POST",
         data: formData,
@@ -450,21 +460,20 @@ function add_education_format1()
     degree_name = $('#degree_name').val();
     school_name = $('#school_name').val();
     qualification = $('#qualification').val();
-    location = $('#location').val();
-    e_month = $('#degree_name').val();
-    e_year = $('#degree_name').val();
+    c_location = $('#c_location').val();
+    e_month = $('#e_month').val();
+    e_year = $('#e_year').val();
 
     var formData = new FormData();
     formData.append('degree_name',degree_name);
     formData.append('school_name',school_name);
     formData.append('qualification',qualification);
-    formData.append('location',location);
+    formData.append('c_location',c_location);
     formData.append('e_month',e_month);
     formData.append('e_year',e_year);
-
-    //alert('this is alertt');
+ 
     $.ajax({
-        // url: "https://localhost/sky_voice/Category/add_contact_form",
+      
         url: base_url+"Home/add_eductaion_form",  
         type : "POST",
         data: formData,
@@ -480,7 +489,173 @@ function add_education_format1()
         }
     });
 }
+function add_employment_format1()
+{ 
+    job_title = $('#job_title').val();
+    company_name = $('#company_name').val();
+    job_location = $('#job_location').val();
+    emp_from_month = $('#emp_from_month').val();
+    emp_from_year = $('#emp_from_year').val();
+    emp_to_month = $('#emp_to_month').val();
+    emp_to_year = $('#emp_to_year').val();
+
+    var formData = new FormData();
+    formData.append('job_title',job_title);
+    formData.append('company_name',company_name);
+    formData.append('job_location',job_location);
+    formData.append('emp_from_month',emp_from_month);
+    formData.append('emp_from_year',emp_from_year);
+    formData.append('emp_to_month',emp_to_month);
+    formData.append('emp_to_year',emp_to_year);
+
+    $.ajax({
+        url: base_url+"Home/add_employment_form",  
+        type : "POST",
+        data: formData,
+        processData:false,
+        contentType:false,  
+        success: function(result)
+        { 
+            if (result == 'Valid') 
+            {
+                alert('Employment Added successfully!');
+                location.reload();
+            }
+        }
+    });
+}
+function add_hobbie_format1()
+{ 
+    hobbie = $('#hobbie').val();
+
+    var formData = new FormData();
+    formData.append('hobbie',hobbie);
+   
+    $.ajax({
+      
+        url: base_url+"Home/add_hobbie_form",  
+        type : "POST",
+        data: formData,
+        processData:false,
+        contentType:false,  
+        success: function(result)
+        { 
+            if (result == 'Valid') 
+            {
+                alert('Hobbie Added successfully!');
+                location.reload();
+            }
+        }
+    });
+}
+function add_skills_format1()
+{ 
+    skills = $('#skills').val();
+
+    var formData = new FormData();
+    formData.append('skills',skills);
+   
+    $.ajax({
+      
+        url: base_url+"Home/add_skills_form",  
+        type : "POST",
+        data: formData,
+        processData:false,
+        contentType:false,  
+        success: function(result)
+        { 
+            if (result == 'Valid') 
+            {
+                alert('Skills Added successfully!');
+                location.reload();
+            }
+        }
+    });
+}
+function add_language_format1()
+{ 
+    language = $('#language').val();
+
+    var formData = new FormData();
+    formData.append('language',language);
+   
+    $.ajax({
+      
+        url: base_url+"Home/add_language_form",  
+        type : "POST",
+        data: formData,
+        processData:false,
+        contentType:false,  
+        success: function(result)
+        { 
+            if (result == 'Valid') 
+            {
+                alert('Language Added successfully!');
+                location.reload();
+            }
+        }
+    });
+}
+function add_reference_format1()
+{ 
+    ref_name = $('#ref_name').val();
+    relationship = $('#relationship').val();
+    ref_company_name = $('#ref_company_name').val();
+    ref_company_email = $('#ref_company_email').val();
+    ref_company_phone = $('#ref_company_phone').val();
+    ref_company_address = $('#ref_company_address').val();
+
+    var formData = new FormData();
+    formData.append('ref_name',ref_name);
+    formData.append('relationship',relationship);
+    formData.append('ref_company_name',ref_company_name);
+    formData.append('ref_company_email',ref_company_email);
+    formData.append('ref_company_phone',ref_company_phone);
+    formData.append('ref_company_address',ref_company_address);
+   
+    $.ajax({
+      
+        url: base_url+"Home/add_reference_form",  
+        type : "POST",
+        data: formData,
+        processData:false,
+        contentType:false,  
+        success: function(result)
+        { 
+            if (result == 'Valid') 
+            {
+                alert('Reference Added successfully!');
+                location.reload();
+            }
+        }
+    });
+}
+function add_awards_format1()
+{ 
+    awards = $('#awards').val();
+
+    var formData = new FormData();
+    formData.append('awards',awards);
+   
+    $.ajax({
+      
+        url: base_url+"Home/add_awards_form",  
+        type : "POST",
+        data: formData,
+        processData:false,
+        contentType:false,  
+        success: function(result)
+        { 
+            if (result == 'Valid') 
+            {
+                alert('Awards Added successfully!');
+                location.reload();
+            }
+        }
+    });
+}
 </script>
+
 <script type="text/javascript">
       function preview_format1_modal(id)
       {

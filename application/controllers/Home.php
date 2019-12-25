@@ -38,7 +38,7 @@ class Home extends CI_Controller {
 	}
 	public function resume()
 	{
-		if (!$this->login_id) {
+		if (!$this->login_std_id) {
 			redirect('Home/studentLogIn');
 		}
 		else{
@@ -67,8 +67,8 @@ class Home extends CI_Controller {
 	public function check_email_already_exist_for_company()
 	{
 		$email=$_POST['email'];
-		$this->load->model('Model_company_login');
-		$login_data = $this->Model_company_login->check_email_alredy_exist_for_company($email);
+		$this->load->model('Model_company_master');
+		$login_data = $this->Model_company_master->check_email_alredy_exist_for_company($email);
 		if ($login_data) {
 			echo "Valid";
 		}
@@ -100,7 +100,7 @@ class Home extends CI_Controller {
         $e_mail = $_POST['e_mail'];
         $real_password = $_POST['password'];
 
-        $this->load->model('Model_company_login');
+        $this->load->model('Model_company_master');
         $data_category = array(
         	'company_name'=>$user_name,
         	'mobile_no'=>$mobile_no,
@@ -111,7 +111,7 @@ class Home extends CI_Controller {
         	'created_date_time'=>$this->current_date_time
            );
 
-        $data_id = $this->Model_company_login->insert_company_registeration($data_category);
+        $data_id = $this->Model_company_master->insert_company_registeration($data_category);
         if ($data_id) {
         	echo "Valid";
 
@@ -245,7 +245,7 @@ class Home extends CI_Controller {
         $degree_name = $_POST['degree_name'];
         $school_name = $_POST['school_name'];
         $qualification = $_POST['qualification'];
-        $location = $_POST['location'];
+        $c_location = $_POST['c_location'];
         $e_month = $_POST['e_month'];
         $e_year = $_POST['e_year'];
 
@@ -254,12 +254,119 @@ class Home extends CI_Controller {
         	'degree_name'=>$degree_name,
         	'school_name'=>$school_name,
         	'qualification'=>$qualification,
-        	'location'=>$location,
+        	'c_location'=>$c_location,
         	'e_month'=>$e_month,
         	'e_year'=>$e_year,
            );
 
         $data_id = $this->Model_resume_format1->insert_resume_format1_eduation($data_category);
+        if ($data_id) {
+        	echo "Valid";
+        }
+	}
+	public function add_employment_form()
+	{
+        $job_title = $_POST['job_title'];
+        $company_name = $_POST['company_name'];
+        $job_location = $_POST['job_location'];
+        $emp_from_month = $_POST['emp_from_month'];
+        $emp_from_year = $_POST['emp_from_year'];
+        $emp_to_month = $_POST['emp_to_month'];
+        $emp_to_year = $_POST['emp_to_year'];
+
+        $this->load->model('Model_resume_format1');
+        $data_category = array(
+        	'job_title'=>$job_title,
+        	'company_name'=>$company_name,
+        	'job_location'=>$job_location,
+        	'emp_from_month'=>$emp_from_month,
+        	'emp_from_year'=>$emp_from_year,
+        	'emp_to_month'=>$emp_to_month,
+        	'emp_to_year'=>$emp_to_year,
+           );
+
+        $data_id = $this->Model_resume_format1->insert_resume_format1_emplyoment($data_category);
+        if ($data_id) {
+        	echo "Valid";
+        }
+	}
+	public function add_hobbie_form()
+	{
+        $hobbie = $_POST['hobbie'];
+
+        $this->load->model('Model_resume_format1');
+        $data_category = array(
+        	'hobbie'=>$hobbie,
+           );
+
+        $data_id = $this->Model_resume_format1->insert_resume_format1_hobbie($data_category);
+        if ($data_id) {
+        	echo "Valid";
+        }
+	}
+	public function add_skills_form()
+	{
+        $skills = $_POST['skills'];
+
+        $this->load->model('Model_resume_format1');
+        $data_category = array(
+        	'skills'=>$skills,
+           );
+
+        $data_id = $this->Model_resume_format1->insert_resume_format1_skills($data_category);
+        if ($data_id) {
+        	echo "Valid";
+        }
+	}
+	public function add_language_form()
+	{
+        $language = $_POST['language'];
+
+        $this->load->model('Model_resume_format1');
+        $data_category = array(
+        	'language'=>$language,
+           );
+
+        $data_id = $this->Model_resume_format1->insert_resume_format1_language($data_category);
+        if ($data_id) {
+        	echo "Valid";
+        }
+	}
+	public function add_reference_form()
+	{
+        $ref_name = $_POST['ref_name'];
+        $relationship = $_POST['relationship'];
+        $ref_company_name = $_POST['ref_company_name'];
+        $ref_company_email = $_POST['ref_company_email'];
+        $ref_company_phone = $_POST['ref_company_phone'];
+        $ref_company_address = $_POST['ref_company_address'];
+
+        $this->load->model('Model_resume_format1');
+        $data_category = array(
+        	'ref_name'=>$ref_name,
+        	'relationship'=>$relationship,
+        	'ref_company_name'=>$ref_company_name,
+        	'ref_company_email'=>$ref_company_email,
+        	'ref_company_phone'=>$ref_company_phone,
+        	'ref_company_address'=>$ref_company_address,	
+           );
+
+        $data_id = $this->Model_resume_format1->insert_resume_format1_reference($data_category);
+        if ($data_id) {
+        	echo "Valid";
+        }
+	}
+	public function add_awards_form()
+	{
+        $awards = $_POST['awards'];
+
+        $this->load->model('Model_resume_format1');
+        $data_category = array(
+        	'awards'=>$awards,
+        	'created_date_time'=>$this->current_date_time,
+           );
+
+        $data_id = $this->Model_resume_format1->insert_resume_format1_awards($data_category);
         if ($data_id) {
         	echo "Valid";
         }
