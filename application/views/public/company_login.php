@@ -33,7 +33,7 @@
             </div>
             <div class="limiter">
 		<div class="container-login100">
-			<div class="wrap-login100">
+			<div class="wrap-login1002">
 				<form id="login_form" class="login100-form validate-form p-l-55 p-r-55 p-t-120">
 					<span class="login100-form-title">
 						Sign In
@@ -42,12 +42,12 @@
 					<span id="show_error" class="emsg hidden"></span>
 
 					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-						<input class="input100" id="company_login" type="text" name="username" placeholder="E-mail/Mobile No.">
+						<input class="input1002" id="company_login" type="text" name="username" placeholder="E-mail/Mobile No.">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Please enter password">
-						<input class="input100" id="password" type="password" name="pass" placeholder="Password">
+						<input class="input1002" id="password" type="password" name="pass" placeholder="Password">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -61,7 +61,7 @@
 						</a>
 					</div>
 
-					<div class="container-login100-form-btn">
+					<div class="container-login100-form-btn3">
 						<button type="submit" onclick="" class="login100-form-btn">
 							Sign in
 						</button>
@@ -89,7 +89,13 @@
 
 <?php $this->load->view('public/footer');?>
 <?php $this->load->view('bars/js');?>
-
+<script type="text/javascript">
+// 	window.onload = function(){
+//     window.scrollTo(0, Number.'50');
+// }
+$(document).scrollTop('50');
+window.scrollBy(0,400);	
+</script>
 <script type="text/javascript">
       $( "#login_form" ).submit(function( event ) {
         company_login_check();

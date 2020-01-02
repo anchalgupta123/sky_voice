@@ -107,6 +107,7 @@
                         <table id="zero_config" class="table table-striped table-bordered">
                         <thead>
                           <tr>
+                            <th>Sr No.</th>
                             <th>Name</th>
                             <th>Location</th>
                             <th>HR Name</th>
@@ -114,18 +115,23 @@
                             <th>HR Contact No.</th>
                             <th>Unique ID</th>
                             <th>Category</th>
+                            <th>resume visitor</th>
                             <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <?php foreach ($companies as $key){ ?>
+                          <?php $x=1; foreach ($companies as $key){ ?>
                           <tr>
+                            <td><?php echo $x++; ?></td>
                             <td><?php echo $key->company_name; ?></td>
                             <td><?php echo $key->city; ?></td>
                             <td><?php echo $key->hr_name; ?></td>
                             <td><?php echo $key->hr_email; ?></td>
                             <td><?php echo $key->hr_contact_no; ?></td>
-                            <td><?php if ($key->unique_id!='') {
+                            <td><?php echo $key->hr_contact_no; ?></td>
+
+                            <td><?php if ($key->unique_id!='')
+                             {
                              echo $key->unique_id;
                             } else 
                             {
@@ -134,11 +140,13 @@
                             <td><?php echo $key->business_category; ?></td>
                             <td>
                               <?php if ($key->unique_id!='') {?>
-                           <button class="btn btn-xs btn-warning" onclick="edit_company_modal('<?php echo $key->id; ?>');">Edit</button>
+                           <button class="btn btn-warning" onclick="edit_company_modal('<?php echo $key->id; ?>');">Edit</button>
                             <?php } else 
-                            {
-                              echo "Not To be edited";
-                            }?>
+                            { ?>
+                           <a href="<?php echo base_url();?>Company/viewCompanyPostJob?company_id=<?php echo $key->id;?>" class="btn btn-xs btn-default">View Job Post</a>
+                           <a href="<?php echo base_url();?>Company/viewCompanyPostJob?company_id=<?php echo $key->id;?>" class="btn btn-xs btn-default"><?php echo $key->resume_count; ?></a>
+
+                           <?php } ?>
                              </td>
                           </tr>
                           <?php } ?>

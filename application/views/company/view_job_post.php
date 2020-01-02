@@ -45,7 +45,7 @@
                           <tr>
                             <td><?php echo $x++; ?></td>
                             <td><?php echo $key->job_profile; ?></td>
-                            <td><?php echo $key->job_description; ?></td>
+                            <td><?php echo $key->job_profile; ?></td>
                             <td><?php echo $key->experience; ?></td>
                             <td><?php echo $key->salary; ?></td>
                             <td><?php echo $key->language; ?></td>
@@ -53,8 +53,8 @@
                             <td><?php echo $key->job_location; ?></td>
                             <td><?php echo $key->job_catgory; ?></td> 
                             <td><?php echo $key->created_date_time; ?></td>
-                            <td><button class="btn btn-xs btn-info"><?php if($key->status==0){echo "Deactive";}if($key->status==1){echo "Active";} ?></button>
-                              <button class="btn btn-xs btn-warning" onclick="edit_company_modal('<?php echo $key->id; ?>');">Edit</button></td>
+                            <td><button style="font-weight: bold;font-size: 13px;" class="btn btn-xs btn-info"><?php if($key->status==0){echo "Deactive";}if($key->status==1){echo "Active";} ?></button>
+                              <button  style="color: black;font-weight: bold;font-size: 13px;" class="btn btn-xs btn-warning" onclick="resume_sending_modal('<?php echo $key->company_id; ?>');">Edit</button></td>
                           </tr>
                           <?php } ?>
                         </tbody>
@@ -76,10 +76,12 @@
         $('#zero_config').DataTable();
     </script>
     <script type="text/javascript">
-      function  post_job_modal() {
+      function post_job_modal(id)
+      {
         $.ajax({
           url: base_url+"Company_dashboard/add_post_a_job_modal", 
           type : "POST",
+          data :{id : id},
           success: function(result)
           {
               $('#modal_report').html(result);
@@ -87,10 +89,10 @@
           }
         });
       }
-      function edit_company_modal(id)
+      function resume_sending_modal(id)
       {
         $.ajax({
-          url: base_url+"Company/edit_company_modal", 
+          url: base_url+"Company/resume_sending_modal", 
           type : "POST",
           data :{id : id},
           success: function(result)

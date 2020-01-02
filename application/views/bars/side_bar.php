@@ -247,7 +247,7 @@
                                 <li class="sidebar-item">
                                   <a href="<?php echo base_url();?>Company" class="sidebar-link">
                                     <i class="far fa-building"></i>
-                                    <span class="hide-menu"> All Company </span>
+                                    <span class="hide-menu">Company </span>
                                   </a>
                                 </li>
                               </ul>

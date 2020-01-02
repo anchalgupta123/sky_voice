@@ -67,7 +67,7 @@ display: block;
   
 <div class="container">
 <div class="row">
-<div class="col-md-7 main1">
+<div class="col-md-12 main1">
   <h2 style="margin-bottom: 20px;"><center>Build Resume</center></h2>
   <div id="accordion">
     <div class="form-group section_div">
@@ -126,6 +126,7 @@ display: block;
           </div>  
         </div>
       </div>
+
     </div>  
     <div class="form-group section_div">
       <div class="row">
@@ -342,25 +343,15 @@ display: block;
         </div>
      </div>
   </div>
+  <button type="button" class="btn btn-primary " onclick="add_objective_format1();">Select Templates</button>
 </div>
 </div>
-    <div class="col-md-5 main2">
-      <div class="col-md-10 table-wrapper-scroll-y my-custom-scrollbar" style="height: 350px;width:400px;margin-top:60px;border:1px solid gray;">
-        <?php $this->load->view('resume/format1');?>
-      </div>
-      <div class="col-md-12">
-        <center><button type="button" class="btn btn-primary btn-lg" style="border-radius:30px;font-size: 22px;margin-top: 20px;" onclick="preview_format1_modal();">PREVIEW</button></center>
-      </div>
-    </div>
- 
 </div>
-<div class="modal" id="modal_report"  tabindex="-1" role="dialog" aria-hidden="true">
-  
-</div>
+
 </div>
 <?php $this->load->view('public/footer');?>
 <script type="text/javascript" src="<?php echo base_url();?>assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-
+<script src="<?php echo base_url();?>frontend_assets/lib/quill/dist/quill.min.js"></script>
 <script type="text/javascript">
   function add_contact_format1()
 { 

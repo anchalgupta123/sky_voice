@@ -67,14 +67,14 @@ class Login extends CI_Controller {
 		$user_name = $_POST['user_name'];
 		$password = md5($_POST['password']);
 
-		$this->load->model('Model_student_login');
-		$login_data = $this->Model_student_login->login_student($user_name,$password);
+		$this->load->model('Model_citizen_master');
+		$login_data = $this->Model_citizen_master->login_student($user_name,$password);
 
 		if ($login_data) 
 		{
 			$this->session->set_userdata('login_std_id',$login_data->id);
-			$this->session->set_userdata('login_std_email',$login_data->e_mail);
-			$this->session->set_userdata('login_std_user_name',$login_data->user_name);
+			$this->session->set_userdata('login_std_email',$login_data->email_id);
+			$this->session->set_userdata('login_std_user_name',$login_data->name);
 			echo "Valid";
 		}
 		else

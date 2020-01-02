@@ -1,3 +1,4 @@
+
 <div class="modal-dialog">
 	<div class="modal-content">
 		<form id="uploadForm" data-parsley-validate class="form-horizontal form-label-left">
@@ -24,15 +25,27 @@
 				<div class="form-group row">
 					<label class="col-sm-4 text-right control-label col-form-label" for="first-name">Experience <span class="required">*</span>
                     </label>
-                    <div class="col-md-8 col-sm-8 col-xs-12">
+                    &nbsp;&nbsp;<div class="col-md-8 col-sm-8 col-xs-12 row">
                         <input type="text" id="experience" required="required" class="form-control datepicker col-md-10 col-xs-12" required>
+                        <!-- &nbsp;&nbsp; to &nbsp;&nbsp;
+                        <input type="text" id="experience2" required="required" class="form-control datepicker col-md-2 col-xs-6"  required>
+                        &nbsp;&nbsp;<select class="select2 form-control custom-select col-md-4 col-xs-8">
+                            <option>Select</option>
+                            <option value="AK">Alaska</option>
+                            <option value="HI">Hawaii</option>
+                             <option value="HI">Hawaii</option>
+                              <option value="HI">Hawaii</option>
+                        </select> -->
                     </div>
 				</div>
+				
 				<div class="form-group row">
 					<label class="col-sm-4 text-right control-label col-form-label" for="first-name">Salary  <span class="required">*</span>
                     </label>
-                    <div class="col-md-8 col-sm-8 col-xs-12">
-                        <input type="text" id="salary" required="required" class="form-control datepicker col-md-10 col-xs-12" required>
+                    &nbsp;&nbsp;<div class="col-md-8 col-sm-8 col-xs-12 row">
+
+                        <input type="text" id="salary" required="required" class="form-control datepicker col-md-10 col-xs-12"  required>&nbsp;&nbsp;<!--  to &nbsp;&nbsp;
+                        <input type="text" id="salary2" required="required" class="form-control datepicker col-md-4 col-xs-6"  required> -->
                     </div>
 				</div>
 				<div class="form-group row">
@@ -73,7 +86,7 @@
 
 	</div>
 </div>
-
+</script>
 <script type="text/javascript">
 	$(document).ready(function(){  
       	$('#uploadForm').on('submit', function(e){  

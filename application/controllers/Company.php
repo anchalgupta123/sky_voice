@@ -22,8 +22,15 @@ class Company extends CI_Controller {
 
 	public function index()
 	{
+
 		$this->load->model('Model_company_master');
 		$data['companies'] = $this->Model_company_master->get_all_company();
+		// $this->load->model('Model_resume_user');
+		// $data['resume_user_count_of_company'] = $this->Model_resume_user->get_company_resume_user();
+		// echo "<pre>";
+		// print_r($data);
+		// return;
+
 		$this->load->view('company/view_company',$data);
 	}
 
@@ -31,7 +38,54 @@ class Company extends CI_Controller {
 	{
 		$this->load->view('company/modal_add_company');
 	}
+	public function viewCompanyPostJob()
+	{
+		$company_id=$_GET['company_id'];
+		$this->load->model('Model_company_posted_job');
+		$data['company_job_post']=$this->Model_company_posted_job->get_company_job_post($company_id);
+		// echo "<pre>";
+		// print_r($data);
+		// return;
+		$this->load->view('company/view_post_job',$data);
+	}
 
+	public function send_multiple_resume()
+	{
+		$job_post_id=$_GET['job_post_id'];
+		$this->load->model('Model_company_posted_job');
+		$this->load->model('Model_citizen_master');
+		$data['company_job_post']=$this->Model_company_posted_job->get_only_job($job_post_id);
+		$data['all_primium_user']=$this->Model_citizen_master->get_premium_user();
+		// echo "<pre>";
+		// print_r($data['all_primium_user']);
+		// return;
+		$this->load->view('company/send_multiple_resume',$data);
+	}
+	public function send_multiple_resume_of_perticuler_user()
+	{
+		$job_post_id = $_POST['job_post_id'];
+		$company_id  = $_POST['company_id'];
+		$user_ids  = $_POST['user_ids'];
+		
+		$user_ids = explode(',',$user_ids);
+
+        $this->load->model('Model_resume_user');
+        for ($i=0; $i<count($user_ids) ; $i++) { 
+           $data_category = array(
+        	'job_post_id'=>$job_post_id,
+        	'company_id'=>$company_id,
+        	'user_id'=>$user_ids[$i],
+        	'applying_status'=>'1',
+        	'created_date_time'=>$this->current_date_time,
+           );
+
+        
+        $data_id = $this->Model_resume_user->insert_multiple_resume_to_company($data_category);
+        }
+        if ($data_id) {
+        	echo "Valid";
+        }
+	}
 	public function insert_company_detail()
 	{
 		$c_name = $_POST['c_name'];

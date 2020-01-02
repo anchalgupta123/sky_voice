@@ -36,7 +36,12 @@ class Model_citizen_master extends CI_Model {
 		$this->db->update($this->table, $data);
 		return $id;
 	}
-	
+	public function update_student_membership($data,$user_id)
+    {
+        $this->db->where('id', $user_id);
+        $this->db->update($this->table, $data);
+        return $user_id;
+    }
 	public function update_payment_status($data,$id)
 	{
 		$this->db->where("user_id", $id);
@@ -78,7 +83,12 @@ class Model_citizen_master extends CI_Model {
 		$res = $this->db->query($sql);
 		return $res->result();
  	}
-
+    public function check_email_alredy_exist($email)
+    {
+        $sql = "SELECT * FROM `$this->table` WHERE `email_id` = '$email'";
+        $query = $this->db->query($sql);
+        return $query->row();
+    }
  	public function get_count_today_citizen()
  	{
  		$date = date('Y-m-d');
@@ -100,7 +110,13 @@ class Model_citizen_master extends CI_Model {
  		$res = $this->db->query($sql);
  		return $res->row()->count;
  	}
+    public function login_student($user_name,$password)
+    {
+        $sql = "SELECT * FROM `$this->table` WHERE (`email_id` = '$user_name' or `mobile` = '$user_name') and `password` = '$password' ";
+        $query = $this->db->query($sql);
 
+        return $query->row();
+    }
  	public function get_count_users_by_date($year,$month)
     {
         $sql = "SELECT count(id) as count FROM $this->table WHERE MONTH(created_date_time) = '$month' AND YEAR(created_date_time) = '$year'";
@@ -128,7 +144,12 @@ class Model_citizen_master extends CI_Model {
         $res = $this->db->query($sql);
         return $res->row()->count;
     }
-
+    public function get_premium_user()
+    {
+        $sql = "SELECT * FROM $this->table WHERE payment_status = '1'";
+        $res = $this->db->query($sql);
+        return $res->result();
+    }
     function getcount($table, $where)
     {
         if ($where)

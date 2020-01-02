@@ -49,36 +49,36 @@
             </div>
             <div class="limiter">
     <div class="container-login100">
-      <div class="wrap-login100">
+      <div class="wrap-login1002">
         <form  class="login100-form validate-form p-l-55 p-r-55 p-t-120">
           <span class="login100-form-title">
              Registration
           </span>
 
           <div class=" wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-            <input class=" input100" id="user_name" type="text" value="" placeholder="Company Name">
+            <input class=" input1002" id="user_name" type="text" value="" placeholder="Company Name">
             <span id="show_error" class="emsg1 hidden"></span>
           </div>
           
           <div class="wrap-input100 validate-input m-b-16" data-validate = "Please enter password">
-           <input class="input100" id="mobile_no" value="" maxlength="10" onkeypress='validate(event)' type="text"  placeholder="Mobile No."> 
+           <input class="input1002" id="mobile_no" value="" maxlength="10" onkeypress='validate(event)' type="text"  placeholder="Mobile No."> 
             <!-- <input class="form-control" type="mobile" name="pass" onkeypress="return isNumber(event)"> -->
             <span id="show_error" class="emsg2 hidden"></span>
           </div>
           <div class="wrap-input100 validate-input m-b-16" data-validate = "Please enter password">
-            <input class="email input100"  value="" id="e_mail" type="email" placeholder="E-mail">
+            <input class="email input1002"  value="" id="e_mail" type="email" placeholder="E-mail">
             <span id="show_error" class="emsg3 hidden"></span>
           </div>
           <div class="wrap-input100 validate-input m-b-16" data-validate = "Please enter password">
-            <input class="input100"  id="password" maxlength="8" minlength="8" value="" type="password" placeholder="Password" value="">
+            <input class="input1002"  id="password" maxlength="8" minlength="8" value="" type="password" placeholder="Password" value="">
             <span id="show_error" class="emsg4 hidden"></span>
           </div>
           <div class="wrap-input100 validate-input" data-validate = "Please enter password">
-            <input class="name input100"  id="confirm_pass" maxlength="8" minlength="8" type="password"  value="" placeholder="Confirm Password" value="">
+            <input class="name input1002"  id="confirm_pass" maxlength="8" minlength="8" type="password"  value="" placeholder="Confirm Password" value="">
             <span id="show_error" class="emsg hidden"></span>
           </div>
           
-          <div class="container-login100-form-btn p-t-70">
+          <div class="container-login100-form-btn3 p-t-70">
             <button  id="sign_btn" type="button" onclick="student_register();" class="login100-form-btn">
               Sign up 
             </button>
@@ -101,6 +101,13 @@
 
 <?php $this->load->view('public/footer');?>
 <?php $this->load->view('bars/js');?>
+<script type="text/javascript">
+//  window.onload = function(){
+//     window.scrollTo(0, Number.'50');
+// }
+$(document).scrollTop('50');
+window.scrollBy(0,400); 
+</script>
 <script type="text/javascript">
 $(document).ready(function(){
     var $regexname=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;

@@ -78,7 +78,7 @@ class Company_dashboard extends CI_Controller {
 	{
 		$this->load->view('company/modal_post_job_modal');
 	}
-
+	
 	public function save_job()
 	{
 		$job_profile = $_POST['job_profile'];
@@ -105,6 +105,28 @@ class Company_dashboard extends CI_Controller {
            );
 
         $data_id = $this->Model_company_posted_job->insert_post_job($data_category);
+        if ($data_id) {
+        	echo "Valid";
+        }
+	}
+	public function change_actie_status()
+	{
+		$id = $_POST['id'];
+		$status = $_POST['status'];
+        
+        if ($status==0) {
+        	$data = array(
+        	'status'=>'1'
+           );
+        }
+        else {
+        	$data = array(
+        	'status'=>'0'
+           );
+        }
+        
+		$this->load->model('Model_company_posted_job');
+        $data_id = $this->Model_company_posted_job->update_status($data,$id);
         if ($data_id) {
         	echo "Valid";
         }

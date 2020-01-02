@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div id="intro-carousel" class="owl-carousel" >
+    <div id="intro-carousel" class="owl-carousel" style="position: relative !important;" >
       <div class="item" style="background-image: url('<?php echo base_url();?>frontend_assets/img/banner/01.jpg');">
         <div class="one_banner">
           <h3 class="wow slideInDown" style="animation-duration: 5s;">

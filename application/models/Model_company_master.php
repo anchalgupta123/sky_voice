@@ -18,7 +18,7 @@ class Model_company_master extends CI_Model {
 
 	public function get_all_company()
 	{
-		$sql = "SELECT * FROM $this->table";
+		$sql = "SELECT cm.*,(SELECT count(id)  FROM  resume_user where resume_user.company_id=cm.id) as resume_count  FROM company_master cm";
 		$res = $this->db->query($sql);
 		return $res->result();
 	}

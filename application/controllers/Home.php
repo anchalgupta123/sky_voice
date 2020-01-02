@@ -31,7 +31,10 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('public/collaboration');
 	}
-
+    public function quiz()
+    {
+        $this->load->view('public/quiz');
+    }
 	public function team()
 	{
 		$this->load->view('public/team');
@@ -46,11 +49,66 @@ class Home extends CI_Controller {
 		}
 	}
 
-	public function services()
+	public function premiumJobs()
 	{
-		$this->load->view('public/services');
+		$this->load->view('public/premium');
 	}
-
+    public function Jobs()
+    {
+        $this->load->library('pagination');
+        $this->load->model('Model_company_posted_job');
+        $perPage = 5;
+        $data = array();
+        
+        //get rows count
+        $conditions['returnType'] = 'count';
+        $totalRec = $this->Model_company_posted_job->get_all_jobs_post($conditions);
+        
+        //pagination config
+        $config['base_url']    = base_url().'Home/Jobs/';
+        $config['uri_segment'] = 3;
+        $config['total_rows']  = $totalRec;
+        $config['per_page']    = $perPage;
+        
+        //styling
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="javascript:void(0);">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['next_link'] = 'Next';
+        $config['prev_link'] = 'Prev';
+        $config['next_tag_open'] = '<li class="pg-next">';
+        $config['next_tag_close'] = '</li>';
+        $config['prev_tag_open'] = '<li class="pg-prev">';
+        $config['prev_tag_close'] = '</li>';
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        
+        //initialize pagination library
+        $this->pagination->initialize($config);
+        
+        //define offset
+        $page = $this->uri->segment(3);
+        $offset = !$page?0:$page;
+        
+        //get rows
+        $conditions['returnType'] = '';
+        $conditions['start'] = $offset;
+        $conditions['limit'] = $perPage;
+        $data['company_all_job_post'] = $this->Model_company_posted_job->get_all_jobs_post($conditions);
+        // echo "<pre>";
+        // print_r($data);
+        // return;
+        $this->load->view('public/jobs',$data, FALSE);
+    }
+    public function job_details($id)
+    {
+        $this->load->model('Model_company_posted_job');
+        $data['job'] = $this->Model_company_posted_job->get_job_details($id);
+        $this->load->view('public/job_details',$data);
+    }
 	public function contact()
 	{
 		$this->load->view('public/contact');
@@ -58,8 +116,8 @@ class Home extends CI_Controller {
 	public function check_email_already_exist()
 	{
 		$email=$_POST['email'];
-		$this->load->model('Model_student_login');
-		$login_data = $this->Model_student_login->check_email_alredy_exist($email);
+		$this->load->model('Model_citizen_master');
+		$login_data = $this->Model_citizen_master->check_email_alredy_exist($email);
 		if ($login_data) {
 			echo "Valid";
 		}
@@ -117,28 +175,70 @@ class Home extends CI_Controller {
 
 	}
     }
+    public function update_student_membership()
+    {
+         $user_id = $_POST['user_id'];
+         $data = array(
+            'payment_status' =>'0' 
+        );
+         $this->load->model('Model_citizen_master');
+        $login_data = $this->Model_citizen_master->update_student_membership($data,$user_id);
+        if ($login_data) {
+          echo "Valid";
+        }
+    }
 	public function student_register_form()
 	{
         $user_name = $_POST['user_name'];
         $mobile_no = $_POST['mobile_no'];
         $e_mail = $_POST['e_mail'];
         $real_password = $_POST['password'];
+        $father_name=$_POST['father_name'];
+        $gender=$_POST['gender'];
+        $dupdateob=$_POST['dupdateob'];
+        $marital_status=$_POST['marital_status'];
+        $address=$_POST['address'];
+        $zipcode=$_POST['zipcode'];
+        $city=$_POST['city'];
+        $state=$_POST['state'];
+        $p_address=$_POST['p_address'];
+        $qualification=$_POST['qualification'];
+        $subject=$_POST['subject'];
+        $specializations=$_POST['specializations'];
+        $type_of_job=$_POST['type_of_job'];
+        $id_proof=$_POST['id_proof'];
+        $id_number=$_POST['id_number'];
+        $current_status=$_POST['current_status'];
 
-        $this->load->model('Model_student_login');
+        $this->load->model('Model_citizen_master');
         $data_category = array(
-        	'user_name'=>$user_name,
-        	'mobile_no'=>$mobile_no,
-        	'e_mail'=>$e_mail,
+        	'name'=>$user_name,
+        	'mobile'=>$mobile_no,
+        	'email_id'=>$e_mail,
         	'real_password'=>$real_password,
         	'password'=>md5($real_password),
+        	'gender'=>$gender,
+        	'dob'=>$dupdateob,
+        	'marital_status'=>$marital_status,
+        	'address'=>$address,
+        	'father_name'=>$father_name,
+        	'city'=>$city,
+        	'state'=>$state,
+        	'p_address'=>$p_address,
+        	'qualification'=>$qualification,
+        	'subject_stream'=>$subject,
+        	'specializations'=>$specializations,
+        	'type_of_job'=>$type_of_job,
+        	'current_status'=>$current_status,
+        	'identity'=>$id_proof,
+        	'id_number'=>$id_number,
+        	'zip_code'=>$zipcode,
         	'created_date_time'=>$this->current_date_time
            );
 
-        $data_id = $this->Model_student_login->insert_student_registeration($data_category);
-        if ($data_id) {
-        	echo "Valid";
-
-	}
+        $data_id = $this->Model_citizen_master->insert_citizen_master($data_category);
+        echo json_encode($data_id);
+        
     }
 	public function send_mail_contact()
 	{

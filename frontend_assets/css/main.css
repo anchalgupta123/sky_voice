@@ -106,7 +106,7 @@ iframe {
 }
 
 .wrap-login100 {
-  width: 500px;
+  width: 900px;
   background: #fff;
   border-radius: 20px;
   overflow: hidden;
@@ -116,7 +116,17 @@ iframe {
   -o-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
   -ms-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
 }
-
+.wrap-login1002 {
+  width: 400px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+}
 
 /*==================================================================
 [ Form ]*/
@@ -156,18 +166,47 @@ iframe {
 
 .input100 {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 18px;
+  font-size: 15px;
+  color: #1b3815;
+  line-height: 1.2;
+
+  position: relative;
+  display: block;
+  width: 45%;
+  height: 40px;
+  background: #ebebeb;
+  border-radius: 27px;
+  padding: 0 35px 0 35px;
+}
+.input1002 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
   color: #1b3815;
   line-height: 1.2;
 
   position: relative;
   display: block;
   width: 100%;
+  height: 40px;
+  background: #ebebeb;
+  border-radius: 27px;
+  padding: 0 35px 0 35px;
+}
+.input1001 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  color: #1b3815;
+  line-height: 1.2;
+
+  position: relative;
+  display: block;
+  width: 25%;
   height: 55px;
   background: #ebebeb;
   border-radius: 27px;
   padding: 0 35px 0 35px;
 }
+
 
 
 /*------------------------------------------------------------------
@@ -203,6 +242,16 @@ iframe {
 /*------------------------------------------------------------------
 [ Button ]*/
 .container-login100-form-btn {
+  width: 40%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.container-login100-form-btn3 {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -212,7 +261,16 @@ iframe {
   flex-wrap: wrap;
   justify-content: center;
 }
-
+.container-login100-form-btn2  {
+  width: 20%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 .login100-form-btn {
   display: -webkit-box;
   display: -webkit-flex;

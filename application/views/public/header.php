@@ -25,6 +25,49 @@
   <link href="<?php echo base_url();?>frontend_assets/lib/magnific-popup/magnific-popup.css" rel="stylesheet">
   <link href="<?php echo base_url();?>frontend_assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
 
+<style type="text/css">
+  <style>
+.dropbtn {
+  background-color: yellow;
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 100;
+  /*background-color: #273272;*/
+
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+/*   background-color:  #273272;*/
+background-color:  #273272;
+}
+
+.dropdown-content a {
+ color: black;
+ margin-top: 10px;
+ padding-right: 200px;
+  text-decoration: none;
+  display: block;
+   
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+</style>
   <!-- Main Stylesheet File -->
   <link href="<?php echo base_url();?>frontend_assets/css/style.css" rel="stylesheet">
 
@@ -56,7 +99,18 @@
          <a href="<?php echo base_url();?>Home/companyLogIn"><button type="button" class="btn btn-danger">Company Login</button></a>
         <?php }
         else
-          {?><a><?php echo  $login_std_user_name;?></a>
+          {?>
+            <div class="dropdown">
+              <a type="button" class="dropbtn"><?php echo  $login_std_user_name;?>&nbsp;&#9662;</a>
+              <div class="dropdown-content">
+                <a  href="#">My Profile</a>
+                <a href="#">My Resume</a>
+                <a href="#">Primium Membership</a>
+                <a href="#"></a>
+                 
+              </div>
+            </div>
+           
             <a href="<?php echo base_url();?>Login/student_logout"><button type="button" class="btn btn-success">Logout</button></a>
           <?php } ?>
        
@@ -81,10 +135,10 @@
           <li><a href="<?php echo base_url();?>Home">HOME</a></li>
           <li><a href="<?php echo base_url();?>about_us">ABOUT US</a></li>
           <li><a href="<?php echo base_url();?>our_collaboration">OUR COLLABORATION</a></li>
-          <li><a href="<?php echo base_url();?>team">TEAM</a></li>
-          <li><a href="<?php echo base_url();?>services">SERVICES</a></li>
+          <li><a href="<?php echo base_url();?>jobs">JOBS</a></li>
+          <li><a href="<?php echo base_url();?>premium">PREMIUM JOBS</a></li>
           <li><a href="<?php echo base_url();?>resume">RESUME BUILDER</a></li>
-          <li><a href="<?php echo base_url();?>format">QUIZ</a></li>
+          <li><a href="<?php echo base_url();?>quiz">QUIZ</a></li>
           <li><a href="<?php echo base_url();?>contact_us">CONTACT US</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
