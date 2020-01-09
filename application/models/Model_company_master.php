@@ -22,6 +22,13 @@ class Model_company_master extends CI_Model {
 		$res = $this->db->query($sql);
 		return $res->result();
 	}
+	public function get_all_company_from_select_query()
+	{
+		$sql = "SELECT * FROM company_master ";
+		$res = $this->db->query($sql);
+		return $res->result();
+	}
+
 
 	public function get_company_details($id)
 	{

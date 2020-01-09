@@ -3,7 +3,7 @@
 	<div class="modal-content">
 		<form id="uploadForm" data-parsley-validate class="form-horizontal form-label-left">
 			<div class="modal-header">
-				<h4 class="modal-title" id="myModalLabel">Add Company</h4>
+				<h4 class="modal-title" id="myModalLabel">Post A Job</h4>
 				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
 				</button>	
 			</div>

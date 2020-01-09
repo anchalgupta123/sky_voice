@@ -1,54 +1,4 @@
-<!-- ========== SIDE BAR ========== -->
-<!-- <?php $login_role = $this->session->userdata('login_role'); ?>
-<?php $login_role = $this->session->userdata('login_role'); ?>
-<div class="col-md-3 left_col">
-  <div class="left_col scroll-view">
-    <div class="navbar nav_title" style="border: 0;">
-      <a href="<?php echo base_url();?>Dashboard" class="site_title"><i>SV</i> <span>SkyVoice<small></small></span></a>
-    </div>
 
-    <div class="clearfix"></div>
-
-    <br />
-    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-      <div class="menu_section">
-        <ul class="nav side-menu">
-          <li><a href="<?php echo base_url();?>dashboard"><i class="fa fa-home"></i> Dashboard </a>
-            
-          </li>
-          <?php if ($login_role == 'Admin') { ?>
-          <li><a><i class="fa fa-users"></i> Users   <span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-              <li><a href="<?php echo base_url();?>Users"> All Users </a></li>
-              <li><a href="<?php echo base_url();?>Users/unverified"> Unverified Users </a></li>
-              <li><a href="<?php echo base_url();?>Users/verified"> Verified Users </a></li>
-              <li><a href="<?php echo base_url();?>Users/search"> Search Users </a></li>
-              <li><a href="<?php echo base_url();?>Users/free_search"> Free Users </a></li>
-              <li><a href="<?php echo base_url();?>Users/custom_range"> Custom Range </a></li>
-            </ul>
-          </li>  
-          <li><a><i class="fa fa-building"></i> Company   <span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-              <li><a href="<?php echo base_url();?>Company"> All Company</a></li>
-            </ul>
-          </li> 
-          <li><a><i class="fa fa-check-square-o"></i> Placements   <span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-              <li><a href="<?php echo base_url();?>Placements"> All Placements</a></li>
-            </ul>
-          </li> 
-          <li><a><i class="fa fa-commenting-o"></i> Chat Management <span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-              <li><a href="<?php echo base_url();?>Chat/one_to_one">  One To One</a></li>
-              <li><a href="<?php echo base_url();?>Chat/one_to_many">  One To Many</a></li>
-            </ul>
-          </li> 
-          <?php } ?>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div> -->
 <!-- ========== SIDE BAR ==========-->
 <style type="text/css">
   .sidenav a, .dropdown-btn {
@@ -72,6 +22,7 @@
   color: #f1f1f1;
 }
 </style>
+<?php $login_role = $this->session->userdata('login_role'); ?>
  <aside class="left-sidebar" data-sidebarbg="skin5">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
@@ -95,21 +46,27 @@
                                 <li class="sidebar-item">
                                   <a href="<?php echo base_url();?>Users" class="sidebar-link">
                                     <i class="fas fa-user"></i>
-                                    <span class="hide-menu">All Users </span>
+                                    <span class="hide-menu">Premium Users </span>
                                   </a>
                                 </li>
                                 <li class="sidebar-item">
+                                  <a href="<?php echo base_url();?>Users/freeUser" class="sidebar-link">
+                                   <i class="fas fa-user"></i>
+                                    <span class="hide-menu">Free Users</span>
+                                  </a>
+                                </li>
+                                <!-- <li class="sidebar-item">
                                   <a href="<?php echo base_url();?>Users/unverified" class="sidebar-link">
                                    <i class="fas fa-user"></i>
                                     <span class="hide-menu">Unverified Users</span>
                                   </a>
-                                </li>
-                                <li class="sidebar-item">
+                                </li> -->
+                                <!-- <li class="sidebar-item">
                                   <a href="<?php echo base_url();?>Users/verified" class="sidebar-link">
                                     <i class="fas fa-user"></i>
                                     <span class="hide-menu"> Verified Users </span>
                                   </a>
-                                </li>
+                                </li> -->
                                 <li class="sidebar-item">
                                   <a href="<?php echo base_url();?>Users/search" class="sidebar-link">
                                     <i class="fas fa-user"></i>
@@ -318,6 +275,18 @@
                           <a href="<?php echo base_url();?>Company_dashboard/view_job_post" class="sidebar-link">
                            <i class="fas fa-briefcase"></i>
                             <span class="hide-menu">Post a Job</span>
+                          </a>
+                        </li>
+                        <li class="sidebar-item">
+                          <a href="<?php echo base_url();?>Company_dashboard/view_shortlisted_resume" class="sidebar-link">
+                           <i class="fas fa-copy"></i>
+                            <span class="hide-menu">Shortlisting Resume</span>
+                          </a>
+                        </li>
+                        <li class="sidebar-item">
+                          <a href="<?php echo base_url();?>Company_dashboard/view_placed_user" class="sidebar-link">
+                           <i class="fas fa-copy"></i>
+                            <span class="hide-menu">Placed User</span>
                           </a>
                         </li>
                         <?php } ?>

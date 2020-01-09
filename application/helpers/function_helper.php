@@ -245,20 +245,20 @@ function sendEmail($emailTo, $realName, $subject, $htmlbody,$replymail, $attachm
     // enable SMTP authentication
     $mail -> SMTPSecure = "ssl";
     // sets the prefix to the servier
-    $mail -> Host = "mail.skyvoice.co.in";
+    $mail -> Host = "localhost";
     
 
     // sets GMAIL as the SMTP server
     $mail -> Port = 465;
    
     // set the SMTP port for the GMAIL server
-    $mail -> Username = 'info@skyvoice.co.in';
+    $mail -> Username = 'ap926641@gmail.com';
     // GMAIL username
-    $mail -> Password = '#skyvoice@1X';
+    $mail -> Password = '98936951';
     // GMAIL password
 
     //$mail -> SetFrom('info@recfirstaid.eu', "RECIRL");
-    $mail -> SetFrom('info@skyvoice.co.in', "Enquiry");
+    $mail -> SetFrom('ap926641@gmail.com', "Enquiry");
    
     $mail -> AddReplyTo($replymail, $realName);
     if($ccEmail)

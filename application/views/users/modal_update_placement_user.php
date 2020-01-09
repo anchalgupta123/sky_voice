@@ -24,7 +24,7 @@
                         <select class="form-control" id="company_id" onchange="change_company_name_in_joining();">
                         	<option value="">-Select-</option>
                         	<?php foreach ($company as $key){ ?>
-                        	<option value="<?php echo $key->id;?>" c_category="<?php echo $key->category;?>" hr_name="<?php echo $key->hr_name;?>" hr_email="<?php echo $key->hr_email;?>" company_location="<?php echo $key->company_location;?>"><?php echo $key->name; ?></option>
+                        	<option value="<?php echo $key->id;?>" c_category="<?php echo $key->business_category;?>" hr_name="<?php echo $key->hr_name;?>" hr_email="<?php echo $key->hr_email;?>" company_location="<?php echo $key->city;?>"><?php echo $key->company_name; ?></option>
                         	<?php } ?>
                         </select>
                     </div>

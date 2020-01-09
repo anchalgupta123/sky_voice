@@ -55,6 +55,12 @@ class Model_citizen_master extends CI_Model {
 		$res = $this->db->query($sql);
 		return $res->row();
  	}	
+    public function get_free_citizen_details_md5($id)
+    {
+        $sql = "SELECT *,md5(id) as user_id FROM $this->table WHERE md5(id) = '$id'";
+        $res = $this->db->query($sql);
+        return $res->row();
+    }
 
  	public function get_all_citizen()
  	{

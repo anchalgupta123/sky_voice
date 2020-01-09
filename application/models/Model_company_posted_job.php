@@ -18,7 +18,7 @@ class Model_company_posted_job extends CI_Model {
 
 	public function get_company_job_post($id)
 	{
-		$sql = "SELECT * FROM $this->table WHERE company_id ='$id'";
+		$sql = "SELECT cpj.*,(SELECT count(id)  FROM  resume_user where resume_user.company_id=$id AND resume_user.job_post_id=cpj.id ) as job_resume_count FROM company_posted_job cpj WHERE cpj.company_id ='$id'";
 		$res = $this->db->query($sql);
 		return $res->result();
 	}

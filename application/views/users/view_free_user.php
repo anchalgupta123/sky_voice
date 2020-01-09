@@ -3,7 +3,7 @@
   <head>
      <link href="<?php echo base_url();?>assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
      <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/extra-libs/multicheck/multicheck.css">
-    <?php $this->load->view('bars/head',array('title'=>'Unverified Users'));?>
+    <?php $this->load->view('bars/head',array('title'=>'Free Users'));?>
   </head>
   <body>
     <div id="main-wrapper">
@@ -25,6 +25,8 @@
                                     <table id="zero_config" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
+                                              <th>Sr No.</th>
+                                              <th>Action</th>
                                               <th>Name</th>
                                               <th>Gender</th>
                                               <th>Age</th>
@@ -43,14 +45,15 @@
                                               <th>Referer by</th>
                                               <th>ID Card Type</th>
                                               <th>ID Card Number</th>
-                                              <th>Action</th>
                                             </tr>
                                         </thead>
                                          <tbody>
-                                            <?php if ($view_type == 'Unverified' && is_array($users)){ ?>
-                                              <?php foreach ($users as $key){ ?>
+                                            <?php if ($view_type == 'Free' && is_array($users)){ ?>
+                                              <?php $x=1; foreach ($users as $key){ ?>
                                              <tr>
-                                             <td><a href="javascript:void(0);" onclick="show_user_detail_modal(<?php echo $key->id; ?>);"><?php echo $key->name; ?></a></td>
+                                              <td><?php echo $x++; ?></td>
+                                              <td><a href="<?php echo base_url()?>Users/freeUserMoreDetails?id=<?php echo $key->id;?>"><button type="button" class="btn btn-info">More</button></a></td>
+                                              <td><a href="javascript:void(0);" onclick="show_user_detail_modal(<?php echo $key->id; ?>);"><?php echo $key->name; ?></a></td>
                                               <td><?php echo $key->gender; ?></td>
                                               <td><?php echo calculateAge($key->dob); ?></td>
                                               <td><?php echo $key->mobile; ?></td>
@@ -68,7 +71,7 @@
                                               <td><?php echo $key->refer_by;?></td>
                                               <td><?php echo $key->identity; ?></td>
                                               <td><?php echo $key->id_number; ?></td>
-                                              <td>
+                                              <!-- <td>
                                                   <a class="btn btn-info btn-xs" href="<?php echo base_url('users/feedback/'.md5($key->user_id))?>"><i class="fa fa-book"></i></a>
 
                                                   <?php if ($key->status == 0) { ?>
@@ -76,7 +79,7 @@
                                               <?php } else if ($key->status == 1) { ?>
                                                 <a href="javascript:void(0);" class="btn btn-warning btn-xs"><i class="fa fa-check" aria-hidden="true"></i></a>
                                               <?php } ?>
-                                              </td>
+                                              </td> -->
                                             </tr>  
                                             <?php }  } ?>        
                                        </tbody>

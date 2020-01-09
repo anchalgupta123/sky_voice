@@ -144,7 +144,7 @@
                             <?php } else 
                             { ?>
                            <a href="<?php echo base_url();?>Company/viewCompanyPostJob?company_id=<?php echo $key->id;?>" class="btn btn-xs btn-default">View Job Post</a>
-                           <a href="<?php echo base_url();?>Company/viewCompanyPostJob?company_id=<?php echo $key->id;?>" class="btn btn-xs btn-default"><?php echo $key->resume_count; ?></a>
+                           <a href="<?php echo base_url();?>Company/viewCompanyPostJob?company_id=<?php echo $key->id;?>" class="btn btn-xs btn-warning" style="color:black;font-weight: bold;"><?php echo $key->resume_count; ?></a>
 
                            <?php } ?>
                              </td>

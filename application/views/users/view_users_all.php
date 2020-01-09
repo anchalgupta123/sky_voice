@@ -5,7 +5,7 @@
      <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/extra-libs/multicheck/multicheck.css">
      <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
      <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/libs/select2/dist/css/select2.min.css">
-    <?php $this->load->view('bars/head',array('title'=>'User'));?>
+    <?php $this->load->view('bars/head',array('title'=>'Premium User'));?>
   </head>
   <body>
     <div id="main-wrapper">
@@ -32,6 +32,8 @@
                       <table id="zero_config" class="table table-striped table-bordered">
                           <thead>
                               <tr>
+                                <th>Sr No.</th>
+                                <th>Action</th>
                                 <th>Name</th>
                                 <th>Gender</th>
                                 <th>Age</th>
@@ -50,14 +52,18 @@
                                 <th>Referer by</th>
                                 <th>ID Card Type</th>
                                 <th>ID Card Number</th>
-                                <th>Action</th>
+                                
                               </tr>
                           </thead>
                           <tbody>
-                              <?php if ($view_type == 'All' && is_array($users)){ ?>
-                                <?php foreach ($users as $key){ ?>
+                              <?php if ($view_type == 'Premium' && is_array($users)){ ?>
+                                <?php $x=1; foreach ($users as $key){ ?>
                               <tr>
-                                <td><a style="text-decoration: none;color:#3e5569;" href="javascript:void(0);" onclick="show_user_detail_modal(<?php echo $key->id; ?>);"><?php echo $key->name; ?></a></td>
+                                <td><?php echo $x++; ?></td>
+                                <td>
+                                  <a class="btn btn-info" href="<?php echo site_url('users/moreDetails/?id='.$key->id.'&user_id='.$key->user_id)?>">More</a>
+                                </td>
+                                <td><a  href="javascript:void(0);" onclick="show_user_detail_modal(<?php echo $key->id; ?>);"><?php echo $key->name; ?></a></td>
                                 <td><?php echo $key->gender; ?></td>
                                 <td><?php echo calculateAge($key->dob); ?></td>
                                 <td><?php echo $key->mobile; ?></td>
@@ -77,23 +83,9 @@
                                 <td><?php echo $key->id_number; ?></td>
 
 
-                                <td>
-                                  <a class="btn btn-info btn-xs" href="<?php echo base_url('users/feedback/'.$key->user_id)?>"><i class="fa fa-book"></i></a>
-                                    <?php if ($key->status == 0) { ?>
-                                  <a href="javascript:void(0);" class="btn btn-danger btn-xs" title="User Not Verified" onclick="show_modal_update_status('<?php echo $key->user_id;?>','<?php echo $key->name; ?>')"><i class="fa fa-times" aria-hidden="true"></i></a>
-                                <?php } else if ($key->status == 1) { ?>
-                                  <a href="javascript:void(0);" class="btn btn-warning btn-xs"><i class="fa fa-check" aria-hidden="true" title="User Verified"></i></a>
-                                <?php } ?>
-
-                                <?php if ($key->iss_placed == 0){ ?>
-                                  <a class="btn btn-danger btn-xs" href="javascript:void(0);" onclick="update_placement_user_modal('<?php echo $key->id;?>','<?php echo $key->name; ?>');" title="User Not Placed"><i class="fa fa-exclamation"></i></a>
-                                <?php } else { ?>
-                                  <a class="btn btn-primary btn-xs" href="javascript:void(0);" title="User Placed"><i class="fa fa-check"></i></a>
-                                <?php }?>
-
-                                </td>
+                                
                               </tr>  
-                              <?php }  } ?>
+                              <?php } }  ?>
                           </tbody>
                       </table>
                                 </div>
@@ -148,3 +140,18 @@
     </script>
   </body>
 </html>
+
+
+
+ <!-- <a class="btn btn-info btn-xs" href="<?php  echo base_url('users/feedback/'.$key->user_id)?>"><i class="fa fa-book"></i></a>
+                                    <?php if ($key->status == 0) { ?>
+                                  <a href="javascript:void(0);" class="btn btn-danger btn-xs" title="User Not Verified" onclick="show_modal_update_status('<?php  echo $key->user_id;?>','<?php  echo $key->name; ?>')"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                <?php } else if ($key->status == 1) { ?>
+                                  <a href="javascript:void(0);" class="btn btn-warning btn-xs"><i class="fa fa-check" aria-hidden="true" title="User Verified"></i></a>
+                                <?php } ?>
+
+                                <?php if ($key->iss_placed == 0){ ?>
+                                  <a class="btn btn-danger btn-xs" href="javascript:void(0);" onclick="update_placement_user_modal('<?php  echo $key->id;?>','<?php  echo $key->name; ?>');" title="User Not Placed"><i class="fa fa-exclamation"></i></a>
+                                <?php } else { ?>
+                                  <a class="btn btn-primary btn-xs" href="javascript:void(0);" title="User Placed"><i class="fa fa-check"></i></a>
+                                <?php }?> -->

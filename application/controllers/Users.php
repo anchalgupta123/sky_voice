@@ -23,23 +23,40 @@ class Users extends CI_Controller {
 
 	public function index()
 	{
-		$data['view_type'] = 'All';
+		$data['view_type'] = 'Premium';
 		// $data['users'] = $this->Model_citizen_master->get_all_citizen();
         $select_fields = 'citizen_master.*, md5(citizen_master.id) as user_id';
-        $data['users'] = $this->Model_citizen_master->get_join_record('citizen_master', 'id', 'citizen_payment', 'user_id', $select_fields, '','','','','','citizen_master.id','desc','left');
+        $data['users'] = $this->Model_citizen_master->get_join_record('citizen_master', 'id', 'citizen_payment', 'user_id', $select_fields, 'payment_status','1','','','','citizen_master.id','desc','left');
         //print_r($data['users']);
 		$this->load->view('users/view_users_all', $data);
 	}
 
-    public function feedback($user_id)
+    public function moreDetails()
     {
+        $id=$_GET['id'];
+        $user_id=$_GET['user_id'];
         $this->load->model('Model_feedback');
         $data['users'] = $this->Model_citizen_master->get_citizen_details_md5($user_id);
+        $this->load->model('Model_resume_user');
+        $data['free_jobs'] = $this->Model_resume_user->get_user_free_jobs($id);
+        $data['premium_jobs'] = $this->Model_resume_user->get_user_premium_jobs($id);
         $data['feedback'] = $this->Model_feedback->get_all_feedback($user_id);
         // echo "<pre>";
         // print_r($data);
         // return;
-        $this->load->view('users/users_feedback', $data);
+        $this->load->view('users/users_more_detail', $data);
+    }
+    public function freeUserMoreDetails()
+    {   
+        $id=$_GET['id'];
+        $this->load->model('Model_resume_user');
+        $this->load->model('Model_feedback');
+        $this->load->model('Model_citizen_master');
+        $data['users'] = $this->Model_citizen_master->get_free_citizen_details_md5($id);
+        $data['free_jobs'] = $this->Model_resume_user->get_free_user_jobs($id);
+        $data['premium_jobs'] = $this->Model_resume_user->get_free_user_premium_jobs($id);
+        $data['feedback'] = $this->Model_feedback->get_free_user_all_feedback($id);
+        $this->load->view('users/free_users_more_details',$data);
     }
     
     public function view_data($user_id)
@@ -47,31 +64,43 @@ class Users extends CI_Controller {
         //echo $user_id;
         $this->load->model('Model_feedback');
         $data['users'] = $this->Model_citizen_master->get_citizen_details_md5($user_id);
-        //print_r($data['users']) ;
+        // print_r($data['users']) ;
+        // return;
         $data['user_detail'] = $this->Model_citizen_master->get_single_user_detail($user_id);
         $this->load->view('users/users_data', $data);
     }
 
-	public function unverified()
-	{
-		$data['view_type'] = 'Unverified';
+    public function freeUser()
+    {
+        $data['view_type'] = 'Free';
 
-		// $data['users'] = $this->Model_citizen_master->get_all_citizen_type(0);
+        // $data['users'] = $this->Model_citizen_master->get_all_citizen_type(0);
         $select_fields = 'citizen_master.*, md5(citizen_master.id) as user_id, citizen_payment.payment_status ';
-        $data['users'] = $this->Model_citizen_master->get_join_record('citizen_master', 'id', 'citizen_payment', 'user_id', $select_fields, 'status','0','','','','citizen_master.id','desc','left');
+        $data['users'] = $this->Model_citizen_master->get_join_record('citizen_master', 'id', 'citizen_payment', 'user_id', $select_fields, 'payment_status','0','','','','citizen_master.id','desc','left');
 
-        $this->load->view('users/view_users_unverfied', $data);
-	}
+        $this->load->view('users/view_free_user', $data);
+    }
 
-	public function verified()
-	{
-		$data['view_type'] = 'Verified';
-		// $data['users'] = $this->Model_citizen_master->get_all_citizen_type(1);
-        $select_fields = 'citizen_master.*, md5(citizen_master.id) as user_id, citizen_payment.payment_status ';
-        $data['users'] = $this->Model_citizen_master->get_join_record('citizen_master', 'id', 'citizen_payment', 'user_id', $select_fields, 'status','1','','','','citizen_master.id','desc','left');
+	// public function unverified()
+	// {
+	// 	$data['view_type'] = 'Unverified';
 
-        $this->load->view('users/view_users_verified', $data);
-	}
+	// 	// $data['users'] = $this->Model_citizen_master->get_all_citizen_type(0);
+ //        $select_fields = 'citizen_master.*, md5(citizen_master.id) as user_id, citizen_payment.payment_status ';
+ //        $data['users'] = $this->Model_citizen_master->get_join_record('citizen_master', 'id', 'citizen_payment', 'user_id', $select_fields, 'status','0','','','','citizen_master.id','desc','left');
+
+ //        $this->load->view('users/view_users_unverfied', $data);
+	// }
+
+	// public function verified()
+	// {
+	// 	$data['view_type'] = 'Verified';
+	// 	// $data['users'] = $this->Model_citizen_master->get_all_citizen_type(1);
+ //        $select_fields = 'citizen_master.*, md5(citizen_master.id) as user_id, citizen_payment.payment_status ';
+ //        $data['users'] = $this->Model_citizen_master->get_join_record('citizen_master', 'id', 'citizen_payment', 'user_id', $select_fields, 'status','1','','','','citizen_master.id','desc','left');
+
+ //        $this->load->view('users/view_users_verified', $data);
+	// }
 
 	public function modal_view_status()
 	{
@@ -248,7 +277,10 @@ class Users extends CI_Controller {
         $data['id'] = $_POST['id'];
         $data['name'] = $_POST['name'];
         $this->load->model('Model_company_master');
-        $data['company'] = $this->Model_company_master->get_all_company();
+        $data['company'] = $this->Model_company_master->get_all_company_from_select_query();
+        // echo "<pre>";
+        // print_r($data);
+        // return;
         $this->load->view('users/modal_update_placement_user',$data);
     }
 

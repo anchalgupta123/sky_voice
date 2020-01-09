@@ -22,6 +22,13 @@ class Model_feedback extends CI_Model {
         $res = $this->db->query($sql);
         return $res->result();
     }
+    public function get_free_user_all_feedback($id)
+    {
+        $sql = "SELECT * FROM citizen_feedback where `id` = '$id'";
+        log_message('error',$sql);
+        $res = $this->db->query($sql);
+        return $res->result();
+    }
 
 }
 

@@ -66,6 +66,23 @@ class Company_dashboard extends CI_Controller {
         	echo "Valid";
         }
 	}
+
+	public function update_placement()
+	{
+		$date_of_joining = $_POST['date_of_joining'];
+		$user_resume_id  = $_POST['user_resume_id'];
+
+        $this->load->model('Model_company_master');
+        $data_category = array(
+        	'iss_placed_status'=>'1',
+        	'date_of_joining' =>$date_of_joining,
+           );
+        $this->load->model('Model_resume_user');
+		$data_id=$this->Model_resume_user->update_user_placement($data_category,$user_resume_id);
+        if ($data_id) {
+        	echo "Valid";
+        }
+	}
 	
 	public function view_job_post()
 	{
@@ -78,7 +95,34 @@ class Company_dashboard extends CI_Controller {
 	{
 		$this->load->view('company/modal_post_job_modal');
 	}
+	public function view_shortlisted_resume()
+	{
+		$this->load->model('Model_resume_user');
+		$data['company_shortlist_resume']=$this->Model_resume_user->get_perticuler_company_resume($this->login_com_id);
+		// echo "<pre>";
+		// print_r($data);
+		// return;
+		$this->load->view('company/shortlist_user_for_comapny',$data);
+	}
+	public function modal_user_details()
+    {
+        $id = $_POST['id'];
+        $this->load->model('Model_citizen_master');
+        $data['user'] = $this->Model_citizen_master->get_citizen_details_md5(md5($id));
+        $this->load->view('users/modal_user_details',$data);
+
+    }
 	
+	public function view_placement_resume_user()
+	{
+		$id=$_POST['id'];
+		$this->load->model('Model_resume_user');
+		$data['company_placement_user']=$this->Model_resume_user->set_user_placement_resume($id);
+		// echo "<pre>";
+		// print_r($data);
+		// return;
+		$this->load->view('company/modal_user_placement_by_company',$data);
+	}
 	public function save_job()
 	{
 		$job_profile = $_POST['job_profile'];
